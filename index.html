@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+  />
+  <title>Pizu — narzędzia, które nie wysyłają Twoich plików</title>
+  <meta name="description" content="Darmowe narzędzia do dźwięku, zdjęć i PDF-ów, które działają w całości w Twojej przeglądarce. Twoje pliki nie trafiają na żaden serwer." />
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#121419" media="(prefers-color-scheme: dark)" />
+  <meta property="og:title" content="Pizu — narzędzia, które nie wysyłają Twoich plików" />
+  <meta property="og:description" content="Dźwięk, zdjęcia i PDF-y w przeglądarce. Bez konta, bez instalacji, bez wysyłania plików." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ptaszynski.pl/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="start.css?v=aa2932c791" />
+  <script src="start.js?v=e3bf078215" defer></script>
+</head>
+<body>
+  <a class="skip" href="#narzedzia">Przejdź do narzędzi</a>
+
+  <header class="top">
+    <a class="brand" href="./" aria-label="Pizu — strona główna">
+      <svg class="brand-logo" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="96" class="c-brand" />
+        <g transform="translate(34 40) scale(0.66)">
+          <ellipse cx="95" cy="105" rx="55" ry="50" class="c-white" />
+          <circle cx="105" cy="60" r="45" class="c-white" />
+          <path d="M142 48 L180 66 L140 88 C147 74 147 60 142 48 Z" class="c-beak" />
+          <circle cx="120" cy="55" r="9" class="c-ink" />
+          <path d="M20 140 C36 92 88 74 128 90 C138 102 134 118 120 130 C88 148 44 150 20 140 Z" class="c-wing" />
+        </g>
+      </svg>
+      <span class="brand-name">Pizu</span>
+    </a>
+    <nav class="top-nav" aria-label="Narzędzia">
+      <a href="https://audio.ptaszynski.pl/">Audio</a>
+      <a href="https://grafika.ptaszynski.pl/">Grafika</a>
+      <a href="https://pdf.ptaszynski.pl/">PDF</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Narzędzia z&nbsp;ptaszyński.pl</p>
+        <h1>Narzędzia, które <em>nie wysyłają</em> Twoich plików</h1>
+        <p class="lead">
+          Dźwięk, zdjęcia i&nbsp;PDF-y obrabiasz w&nbsp;przeglądarce — na swoim komputerze albo telefonie.
+          Bez konta, bez instalacji, bez opłat. Pliki nigdzie nie wychodzą.
+        </p>
+        <a class="button" href="#narzedzia">Wybierz narzędzie <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg class="mascot" viewBox="0 0 400 400">
+          <circle cx="200" cy="205" r="160" class="c-brand" />
+          <circle cx="200" cy="205" r="160" class="ring" />
+          <g class="bird" transform="translate(62 80) scale(1.45)">
+            <ellipse cx="95" cy="105" rx="55" ry="50" class="c-white" />
+            <circle cx="105" cy="60" r="45" class="c-white" />
+            <path d="M142 48 L180 66 L140 88 C147 74 147 60 142 48 Z" class="c-beak" />
+            <g class="eye">
+              <circle cx="120" cy="55" r="9" class="c-ink pupil" />
+              <circle cx="123" cy="51.5" r="2.6" class="c-white glint" />
+            </g>
+            <path d="M20 140 C36 92 88 74 128 90 C138 102 134 118 120 130 C88 148 44 150 20 140 Z" class="c-wing" />
+          </g>
+
+          <!-- plakietki trzech narzędzi; animowana jest wewnętrzna grupa, bo CSS transform nadpisałby atrybut -->
+          <g transform="translate(286 62)">
+            <g class="badge badge-1">
+              <rect width="78" height="62" rx="12" class="c-card" />
+              <path d="M16 31 v0 M25 22 v18 M34 14 v34 M43 24 v14 M52 18 v26 M61 28 v6" class="c-wave" />
+            </g>
+          </g>
+          <g transform="translate(300 268)">
+            <g class="badge badge-2">
+              <rect width="78" height="62" rx="12" class="c-card" />
+              <path d="M14 50 L33 26 L46 40 L54 31 L66 50 Z" class="c-brand" />
+              <circle cx="56" cy="18" r="6" class="c-wing" />
+            </g>
+          </g>
+          <g transform="translate(22 270)">
+            <g class="badge badge-3">
+              <rect width="62" height="74" rx="12" class="c-card" />
+              <path d="M17 12 h20 l10 10 v40 h-30 Z" class="c-brand" />
+              <path d="M37 12 v10 h10 Z" class="c-wing" />
+              <path d="M23 36 h18 M23 44 h18 M23 52 h12" class="c-lines" />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section id="narzedzia" class="tools" aria-labelledby="narzedzia-tytul">
+      <div class="section-head">
+        <h2 id="narzedzia-tytul">Trzy narzędzia, jeden ptak</h2>
+        <p>Wybierz, czym chcesz się zająć. Każde działa od razu, bez zakładania konta.</p>
+      </div>
+
+      <ul class="tool-list">
+        <li>
+          <a class="tool tool-audio" href="https://audio.ptaszynski.pl/">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 12h1M7 8v8M11 4v16M15 7v10M19 10v4M22 12h-1" /></svg>
+            </span>
+            <span class="tool-name">Pizu Audio</span>
+            <span class="tool-desc">Oddziel wokal od muzyki, zrób podkład do karaoke, wytnij fragment i&nbsp;zapisz go jako MP3.</span>
+            <span class="tool-tags">
+              <span>Wokal i&nbsp;podkład</span><span>Tempo i&nbsp;tonacja</span><span>Przycinanie</span><span>MP3 · WAV</span>
+            </span>
+            <span class="tool-go">audio.ptaszynski.pl <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="tool tool-grafika" href="https://grafika.ptaszynski.pl/">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5" /><path d="M3 17l5-5 4 4 3-3 6 6" /><circle cx="16" cy="9" r="1.6" /></svg>
+            </span>
+            <span class="tool-name">Pizu Grafika</span>
+            <span class="tool-desc">Konwertuj zdjęcia (także HEIC z&nbsp;iPhone’a), zmniejszaj, kadruj, zasłaniaj prywatne fragmenty i&nbsp;dodawaj znak wodny.</span>
+            <span class="tool-tags">
+              <span>JPG · PNG · WebP · HEIC</span><span>Kompresja</span><span>Kadrowanie</span><span>Znak wodny</span>
+            </span>
+            <span class="tool-go">grafika.ptaszynski.pl <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="tool tool-pdf" href="https://pdf.ptaszynski.pl/">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 2.8h8.2L19 7.6v13.6H6z" /><path d="M14 2.8v5h5" /><path d="M9 13h7M9 16.5h7M9 9.5h3" /></svg>
+            </span>
+            <span class="tool-name">PizuPDF</span>
+            <span class="tool-desc">Scalaj, dziel, kompresuj, podpisuj i&nbsp;konwertuj pliki PDF — także do Worda, z&nbsp;rozpoznawaniem tekstu.</span>
+            <span class="tool-tags">
+              <span>Scal i&nbsp;podziel</span><span>Kompresja</span><span>Podpis</span><span>PDF ↔ Word</span>
+            </span>
+            <span class="tool-go">pdf.ptaszynski.pl <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="why" aria-labelledby="why-tytul">
+      <h2 id="why-tytul" class="visually-hidden">Dlaczego te narzędzia</h2>
+      <ul class="why-list">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" /></svg>
+          <h3>Pliki zostają u&nbsp;Ciebie</h3>
+          <p>Wszystko dzieje się na Twoim urządzeniu. Nic nie trafia na serwer, więc nie ma czego wykraść.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2.5" /><path d="M3 9h18M6.5 6.8h.01M9 6.8h.01" /></svg>
+          <h3>Bez instalacji</h3>
+          <p>Otwierasz stronę i&nbsp;działasz. Na komputerze i&nbsp;na telefonie, w&nbsp;każdej nowoczesnej przeglądarce.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z" /></svg>
+          <h3>Bez konta i&nbsp;opłat</h3>
+          <p>Żadnej rejestracji ani logowania. Wchodzisz, robisz swoje, wychodzisz.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>© 2026 ptaszyński.pl</p>
+    <p class="foot-nic">Szukasz strony o&nbsp;niczym? Przeprowadziła się na <a href="https://nic.ptaszynski.pl/">nic.ptaszynski.pl</a>.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,560 @@
+/* Pizu — strona startowa ptaszynski.pl. Kolory jak w narzędziach (PizuPDF, Audio, Grafika). */
+
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #1d2129;
+  --muted: #5b6170;
+  --line: #e3e6eb;
+  --chip: #f0f2f5;
+  --brand: #ef4249;
+  --brand-deep: #c92f3a;
+  --brand-soft: #ffd3d5;
+  --brand-ink: #c22f39;
+  --glow: rgba(239, 66, 73, 0.12);
+  --shadow: 0 1px 2px rgba(20, 24, 33, 0.05), 0 10px 30px rgba(20, 24, 33, 0.07);
+  --shadow-hover: 0 2px 4px rgba(20, 24, 33, 0.06), 0 18px 40px rgba(20, 24, 33, 0.12);
+  --focus: #2563eb;
+
+  --audio: #6d3fd8;
+  --audio-tile: #efe9ff;
+  --grafika: #0f766e;
+  --grafika-tile: #d9f6f1;
+  --pdf: #c22f39;
+  --pdf-tile: #ffe3e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #121419;
+    --surface: #1b1e25;
+    --ink: #eef0f4;
+    --muted: #a6acb9;
+    --line: #2a2e37;
+    --chip: #23262e;
+    --brand-ink: #f47279;
+    --glow: rgba(239, 66, 73, 0.16);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.25);
+    --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 18px 40px rgba(0, 0, 0, 0.4);
+    --focus: #7aa2ff;
+
+    --audio: #b9a0ff;
+    --audio-tile: #2b2442;
+    --grafika: #5ee0d0;
+    --grafika-tile: #173430;
+    --pdf: #f47279;
+    --pdf-tile: #3a1f23;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background:
+    radial-gradient(1100px 620px at 88% -8%, var(--glow), transparent 62%),
+    radial-gradient(700px 480px at -10% 105%, var(--glow), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 10;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+/* ── układ ─────────────────────────────────────────────── */
+
+.top,
+main,
+.foot {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 20px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.brand-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.top-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.top-nav a {
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.top-nav a:hover {
+  background: var(--chip);
+  color: var(--ink);
+}
+
+/* ── hero ──────────────────────────────────────────────── */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: 40px;
+  padding-block: 40px 72px;
+}
+
+.eyebrow {
+  margin-bottom: 14px;
+  color: var(--brand-ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(2.15rem, 5.2vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--brand-ink);
+}
+
+.lead {
+  max-width: 34em;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(239, 66, 73, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.button:hover {
+  background: var(--brand-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(239, 66, 73, 0.35);
+}
+
+.hero-art {
+  display: flex;
+  justify-content: center;
+}
+
+.mascot {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  overflow: visible;
+}
+
+/* ── kolory ilustracji ─────────────────────────────────── */
+
+.c-brand { fill: var(--brand); }
+.c-white { fill: #fff; }
+.c-beak { fill: var(--brand-soft); }
+.c-ink { fill: #262b36; }
+.c-wing { fill: var(--brand-deep); }
+.c-card { fill: #fff; }
+
+.c-wave {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.c-lines {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.ring {
+  fill: none;
+  stroke: var(--brand);
+  stroke-opacity: 0.35;
+  stroke-width: 2.5;
+  stroke-dasharray: 3 11;
+  stroke-linecap: round;
+  transform: scale(1.11);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.badge {
+  filter: drop-shadow(0 6px 10px rgba(20, 24, 33, 0.18));
+}
+
+/* ── karty narzędzi ────────────────────────────────────── */
+
+.section-head {
+  margin-bottom: 28px;
+}
+
+.section-head h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.section-head p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.tool-list,
+.why-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.tool {
+  --tool: var(--brand-ink);
+  --tile: var(--chip);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+}
+
+.tool-audio { --tool: var(--audio); --tile: var(--audio-tile); }
+.tool-grafika { --tool: var(--grafika); --tile: var(--grafika-tile); }
+.tool-pdf { --tool: var(--pdf); --tile: var(--pdf-tile); }
+
+.tool:hover {
+  transform: translateY(-4px);
+  border-color: var(--tool);
+  box-shadow: var(--shadow-hover);
+}
+
+.tool:focus-visible {
+  border-radius: 20px;
+}
+
+.tool-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--tile);
+  color: var(--tool);
+}
+
+.tool-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tool-name {
+  margin-top: 4px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.tool-desc {
+  color: var(--muted);
+}
+
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.tool-tags span {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tool-go {
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--tool);
+  font-weight: 700;
+}
+
+.tool-go span {
+  display: inline-block;
+  transition: transform 0.18s;
+}
+
+.tool:hover .tool-go span {
+  transform: translateX(4px);
+}
+
+/* ── dlaczego ──────────────────────────────────────────── */
+
+.why {
+  margin-block: 72px 56px;
+}
+
+.why-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.why-list svg {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+  fill: none;
+  stroke: var(--brand-ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.why-list h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.why-list p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ── stopka ────────────────────────────────────────────── */
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-block: 24px 36px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.foot-nic a {
+  color: var(--brand-ink);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* ── animacje (tylko gdy użytkownik ich nie wyłączył) ──── */
+
+@media (prefers-reduced-motion: no-preference) {
+  .ring {
+    animation: spin 60s linear infinite;
+  }
+
+  .badge {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .badge-2 { animation-delay: -2s; }
+  .badge-3 { animation-delay: -4s; }
+
+  .pupil {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: blink 5.5s infinite;
+  }
+
+  .glint {
+    animation: glint 5.5s infinite;
+  }
+}
+
+@keyframes spin {
+  from { transform: scale(1.11) rotate(0deg); }
+  to { transform: scale(1.11) rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+@keyframes glint {
+  0%, 92%, 100% { opacity: 1; }
+  95% { opacity: 0; }
+}
+
+/* ── wąskie ekrany ─────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-block: 16px 56px;
+  }
+
+  .hero-art {
+    order: -1;
+  }
+
+  .mascot {
+    max-width: 260px;
+  }
+
+  .why-list {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top {
+    padding-block: 14px;
+  }
+
+  .top-nav a {
+    padding: 6px 9px;
+    font-size: 0.9rem;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tool {
+    padding: 22px;
+  }
+
+  .why-list {
+    padding: 22px;
+  }
+}
