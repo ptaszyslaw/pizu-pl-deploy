@@ -4,4 +4,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html/pizu/
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp favicon.svg index.html start.css start.js $DEPLOYPATH
+    - /bin/cp favicon.svg index.html settings-init.js start.css start.js $DEPLOYPATH

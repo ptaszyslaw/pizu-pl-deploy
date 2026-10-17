@@ -1,53 +1,54 @@
-/* Pizu — strona startowa ptaszynski.pl. Kolory jak w narzędziach (PizuPDF, Audio, Grafika). */
+/* Pizu — strona startowa pizu.pl. Kolory jak w narzędziach (PizuPDF, Audio, Grafika). */
 
+/* Każdy kolor ma wersję jasną i ciemną (light-dark). O wyborze decyduje color-scheme:
+   system, chyba że w panelu „Wygląd” ustawiono motyw (atrybut data-theme na <html>). */
 :root {
-  color-scheme: light;
-  --bg: #f6f7f9;
-  --surface: #ffffff;
-  --ink: #1d2129;
-  --muted: #5b6170;
-  --line: #e3e6eb;
-  --chip: #f0f2f5;
+  color-scheme: light dark;
+  --bg: light-dark(#f6f7f9, #121419);
+  --surface: light-dark(#ffffff, #1b1e25);
+  --ink: light-dark(#1d2129, #eef0f4);
+  --muted: light-dark(#5b6170, #a6acb9);
+  --line: light-dark(#e3e6eb, #2a2e37);
+  --chip: light-dark(#f0f2f5, #23262e);
   --brand: #ef4249;
   --brand-deep: #c92f3a;
   --brand-soft: #ffd3d5;
-  --brand-ink: #c22f39;
-  --glow: rgba(239, 66, 73, 0.12);
-  --shadow: 0 1px 2px rgba(20, 24, 33, 0.05), 0 10px 30px rgba(20, 24, 33, 0.07);
-  --shadow-hover: 0 2px 4px rgba(20, 24, 33, 0.06), 0 18px 40px rgba(20, 24, 33, 0.12);
-  --focus: #2563eb;
+  --brand-ink: light-dark(#c22f39, #f47279);
+  --glow: light-dark(rgba(239, 66, 73, 0.12), rgba(239, 66, 73, 0.16));
+  --shadow-color: light-dark(rgba(20, 24, 33, 0.07), rgba(0, 0, 0, 0.3));
+  --shadow: 0 1px 2px var(--shadow-color), 0 10px 30px var(--shadow-color);
+  --shadow-hover: 0 2px 4px var(--shadow-color), 0 18px 40px var(--shadow-color);
+  --backdrop: light-dark(rgba(20, 24, 33, 0.45), rgba(0, 0, 0, 0.65));
+  --focus: light-dark(#2563eb, #7aa2ff);
 
-  --audio: #6d3fd8;
-  --audio-tile: #efe9ff;
-  --grafika: #0f766e;
-  --grafika-tile: #d9f6f1;
-  --pdf: #c22f39;
-  --pdf-tile: #ffe3e5;
+  --audio: light-dark(#6d3fd8, #b9a0ff);
+  --audio-tile: light-dark(#efe9ff, #2b2442);
+  --grafika: light-dark(#0f766e, #5ee0d0);
+  --grafika-tile: light-dark(#d9f6f1, #173430);
+  --pdf: light-dark(#c22f39, #f47279);
+  --pdf-tile: light-dark(#ffe3e5, #3a1f23);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --bg: #121419;
-    --surface: #1b1e25;
-    --ink: #eef0f4;
-    --muted: #a6acb9;
-    --line: #2a2e37;
-    --chip: #23262e;
-    --brand-ink: #f47279;
-    --glow: rgba(239, 66, 73, 0.16);
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.25);
-    --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 18px 40px rgba(0, 0, 0, 0.4);
-    --focus: #7aa2ff;
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
-    --audio: #b9a0ff;
-    --audio-tile: #2b2442;
-    --grafika: #5ee0d0;
-    --grafika-tile: #173430;
-    --pdf: #f47279;
-    --pdf-tile: #3a1f23;
-  }
+/* Wysoki kontrast: ciemniejsze (w ciemnym motywie jaśniejsze) teksty i obramowania, mocniejsze kolory. */
+:root[data-contrast="high"] {
+  --ink: light-dark(#0b0d12, #ffffff);
+  --muted: light-dark(#343944, #dde0e7);
+  --line: light-dark(#7d8491, #7f8694);
+  --chip: light-dark(#e3e6eb, #2c3039);
+  --brand-ink: light-dark(#a3202a, #ff8a8f);
+  --focus: light-dark(#1d4ed8, #a5c0ff);
+  --audio: light-dark(#5124b5, #d0c0ff);
+  --grafika: light-dark(#0a5a54, #86f2e4);
+  --pdf: light-dark(#a3202a, #ff8a8f);
 }
+
+/* Wielkość tekstu: czcionki są w rem, więc rosną razem z ustawieniem, a przyciski razem z nimi. */
+:root[data-text="115"] { font-size: 115%; }
+:root[data-text="130"] { font-size: 130%; }
+:root[data-text="150"] { font-size: 150%; }
 
 *,
 *::before,
@@ -57,8 +58,13 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-motion="reduced"]) { scroll-behavior: smooth; }
+}
+
+html[data-motion="full"] { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -467,28 +473,53 @@ main,
   text-underline-offset: 3px;
 }
 
-/* ── animacje (tylko gdy użytkownik ich nie wyłączył) ──── */
+/* ── animacje ──────────────────────────────────────────── */
 
+/* Ruch działa, gdy pozwala na to ustawienie systemu albo w panelu wybrano „Pełne”;
+   „Ograniczone” zatrzymuje animacje i wyłącza przejścia. */
 @media (prefers-reduced-motion: no-preference) {
-  .ring {
-    animation: spin 60s linear infinite;
-  }
+  :root { --play: running; }
+}
 
-  .badge {
-    animation: float 6s ease-in-out infinite;
-  }
+:root[data-motion="full"] { --play: running; }
+:root[data-motion="reduced"] { --play: paused; }
 
-  .badge-2 { animation-delay: -2s; }
-  .badge-3 { animation-delay: -4s; }
+.ring {
+  animation: spin 60s linear infinite;
+  animation-play-state: var(--play, paused);
+}
 
-  .pupil {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: blink 5.5s infinite;
-  }
+.badge {
+  animation: float 6s ease-in-out infinite;
+  animation-play-state: var(--play, paused);
+}
 
-  .glint {
-    animation: glint 5.5s infinite;
+.badge-2 { animation-delay: -2s; }
+.badge-3 { animation-delay: -4s; }
+
+.pupil {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 5.5s infinite;
+  animation-play-state: var(--play, paused);
+}
+
+.glint {
+  animation: glint 5.5s infinite;
+  animation-play-state: var(--play, paused);
+}
+
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) *,
+  :root:not([data-motion="full"]) *::before,
+  :root:not([data-motion="full"]) *::after {
+    transition: none !important;
   }
 }
 
@@ -510,6 +541,202 @@ main,
 @keyframes glint {
   0%, 92%, 100% { opacity: 1; }
   95% { opacity: 0; }
+}
+
+/* ── panel „Wygląd i dostępność” ───────────────────────── */
+
+/* Przy dużym tekście na wąskim ekranie przyciski schodzą do drugiego wiersza zamiast wystawać. */
+.top {
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+
+.top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.settings-open,
+.icon-button,
+.text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.settings-open {
+  padding: 7px 13px;
+}
+
+.settings-open:hover,
+.icon-button:hover,
+.text-button:hover {
+  background: var(--chip);
+}
+
+.settings-open svg,
+.icon-button svg,
+.text-button svg,
+.choices svg {
+  width: 1.15em;
+  height: 1.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+.icon-button {
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+}
+
+.text-button {
+  padding: 8px 14px;
+  border-color: transparent;
+  background: transparent;
+}
+
+.button-small {
+  margin-top: 0;
+  padding: 10px 20px;
+  border: 0;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.settings {
+  width: min(560px, calc(100% - 24px));
+  max-height: calc(100% - 24px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-hover);
+}
+
+.settings::backdrop {
+  background: var(--backdrop);
+}
+
+.settings-body {
+  padding: 22px 24px 18px;
+}
+
+.settings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.settings-head h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.setting {
+  margin: 20px 0 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.setting legend {
+  padding: 0;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+.setting-hint {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.choices label {
+  position: relative;
+}
+
+/* Prawdziwe przyciski radiowe (strzałki działają same), schowane pod wyglądem przycisku. */
+.choices input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.choices span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.choices input:hover + span {
+  background: var(--chip);
+}
+
+.choices input:checked + span {
+  border-color: var(--brand-ink);
+  background: var(--pdf-tile);
+  color: var(--brand-ink);
+  box-shadow: inset 0 0 0 1px var(--brand-ink);
+}
+
+.choices input:focus-visible + span {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.settings-note {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.settings-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
 }
 
 /* ── wąskie ekrany ─────────────────────────────────────── */
@@ -543,6 +770,19 @@ main,
   .top-nav a {
     padding: 6px 9px;
     font-size: 0.9rem;
+  }
+
+  /* Na telefonie przycisk „Wygląd” zostaje samą ikoną (nazwa w aria-label). */
+  .settings-open {
+    padding: 7px 9px;
+  }
+
+  .settings-open-text {
+    display: none;
+  }
+
+  .settings-body {
+    padding: 18px 16px 14px;
   }
 
   .brand-logo {
