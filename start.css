@@ -1,4 +1,4 @@
-/* Pizu — strona startowa pizu.pl. Kolory jak w narzędziach (PizuPDF, Audio, Grafika). */
+/* Pizu — strona startowa pizu.pl. Kolory jak w narzędziach (PizuPDF, PizuAudio, PizuGrafika). */
 
 /* Każdy kolor ma wersję jasną i ciemną (light-dark). O wyborze decyduje color-scheme:
    system, chyba że w panelu „Wygląd” ustawiono motyw (atrybut data-theme na <html>). */
@@ -378,6 +378,11 @@ main,
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.015em;
+}
+
+/* Nazwa jak w logo narzędzi: „Pizu” w kolorze tekstu, nazwa narzędzia na czerwono (ZASADY-MARKI.md). */
+.tool-name-product {
+  color: var(--brand-ink);
 }
 
 .tool-desc {
