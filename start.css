@@ -529,6 +529,61 @@ main,
   font-size: 0.95rem;
 }
 
+/* ── wsparcie ──────────────────────────────────────────── */
+
+.support {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin-bottom: 56px;
+  padding: 26px 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.support-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: var(--brand-ink);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.support-text {
+  flex: 1 1 20rem;
+}
+
+.support-text h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.support-text p {
+  margin-top: 6px;
+  max-width: 40em;
+  color: var(--muted);
+}
+
+/* Spokojniejszy niż czerwony przycisk na górze strony: obrys w kolorze marki. */
+.support-button {
+  margin-top: 0;
+  border: 2px solid var(--brand-ink);
+  background: var(--surface);
+  color: var(--brand-ink);
+  box-shadow: none;
+}
+
+.support-button:hover {
+  background: var(--pdf-tile);
+  box-shadow: none;
+}
+
 /* ── stopka ────────────────────────────────────────────── */
 
 .foot {
@@ -909,7 +964,8 @@ main,
     padding: 22px;
   }
 
-  .why-list {
+  .why-list,
+  .support {
     padding: 22px;
   }
 }

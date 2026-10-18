@@ -27,7 +27,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
   <script src="settings-init.js?v=d008af4809"></script>
-  <link rel="stylesheet" href="start.css?v=ccc630c688" />
+  <link rel="stylesheet" href="start.css?v=5b6ad667fa" />
   <script src="start.js?v=20a35c500a" defer></script>
 </head>
 <body>
@@ -213,19 +213,33 @@
         </div>
         <div>
           <dt>Co zostaje w&nbsp;przeglądarce</dt>
-          <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
+          <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
         </div>
         <div>
           <dt>Bez śledzenia</dt>
           <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki.</dd>
         </div>
+        <div>
+          <dt>Wsparcie przez Suppi</dt>
+          <dd>Link „Wesprzyj Pizu” prowadzi do serwisu Suppi (Patronite). Strony Pizu łączą się z&nbsp;nim dopiero, gdy go klikniesz. Wpłatę obsługuje Suppi — strony Pizu nie mają dostępu do danych płatności.</dd>
+        </div>
       </dl>
       <p class="privacy-more">Szczegóły każdego narzędzia znajdziesz w&nbsp;jego oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Prywatność”. Pytania: <a href="mailto:kontakt@ptaszynski.pl">kontakt@ptaszynski.pl</a></p>
+    </section>
+
+    <!-- Zwykły link do Suppi zamiast ich widżetu: widżet wczytywałby obrazek z suppi.pl przy każdej wizycie. -->
+    <section id="wsparcie" class="support" aria-labelledby="wsparcie-tytul">
+      <svg class="support-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2v2M14 2v2M6 2v2" /><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" /></svg>
+      <div class="support-text">
+        <h2 id="wsparcie-tytul">Wesprzyj Pizu</h2>
+        <p>Narzędzia Pizu są darmowe i&nbsp;bez reklam. Jeśli Ci pomogły, możesz postawić kawę — wsparcie pomaga opłacić serwer i&nbsp;rozwijać kolejne narzędzia.</p>
+      </div>
+      <a class="button support-button" href="https://suppi.pl/pizu" target="_blank" rel="noopener">Postaw kawę na Suppi<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>
     </section>
   </main>
 
   <footer class="foot">
-    <p>© 2026 pizu.pl · <a href="#prywatnosc">Prywatność</a></p>
+    <p>© 2026 pizu.pl · <a href="#prywatnosc">Prywatność</a> · <a href="https://suppi.pl/pizu" target="_blank" rel="noopener">Wesprzyj Pizu<span class="visually-hidden"> na Suppi (otwiera się w nowej karcie)</span></a></p>
     <p class="foot-nic">Szukasz strony o&nbsp;niczym? Przeprowadziła się na <a href="https://nic.ptaszynski.pl/">nic.ptaszynski.pl</a>.</p>
   </footer>
 
