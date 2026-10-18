@@ -8,17 +8,26 @@
     content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
   />
   <title>Pizu — narzędzia, które nie wysyłają Twoich plików</title>
-  <meta name="description" content="Darmowe narzędzia do dźwięku, zdjęć i PDF-ów, które działają w całości w Twojej przeglądarce. Twoje pliki nie trafiają na żaden serwer." />
+  <meta name="description" content="Darmowe narzędzia do dźwięku, zdjęć i PDF-ów, które działają w Twojej przeglądarce. Pliki są przetwarzane na Twoim urządzeniu, bez przesyłania ich na serwer." />
   <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#121419" media="(prefers-color-scheme: dark)" />
   <meta property="og:title" content="Pizu — narzędzia, które nie wysyłają Twoich plików" />
   <meta property="og:description" content="Dźwięk, zdjęcia i PDF-y w przeglądarce. Bez konta, bez instalacji, bez wysyłania plików." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pizu.pl/" />
+  <meta property="og:site_name" content="Pizu" />
+  <meta property="og:locale" content="pl_PL" />
+  <!-- grafika: scripts/og-image.html → node scripts/og-image.mjs -->
+  <meta property="og:image" content="https://pizu.pl/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Ptak Pizu i napis: Pizu — narzędzia, które nie wysyłają Twoich plików. Dźwięk, zdjęcia, PDF." />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
   <script src="settings-init.js?v=d008af4809"></script>
-  <link rel="stylesheet" href="start.css?v=c9c94a83dc" />
+  <link rel="stylesheet" href="start.css?v=ccc630c688" />
   <script src="start.js?v=20a35c500a" defer></script>
 </head>
 <body>
@@ -58,7 +67,7 @@
         <h1>Narzędzia, które <em>nie wysyłają</em> Twoich plików</h1>
         <p class="lead">
           Dźwięk, zdjęcia i&nbsp;PDF-y obrabiasz w&nbsp;przeglądarce — na swoim komputerze albo telefonie.
-          Bez konta, bez instalacji, bez opłat. Pliki nigdzie nie wychodzą.
+          Bez konta, bez instalacji, bez opłat. Pliki nie są wysyłane na serwer.
         </p>
         <a class="button" href="#narzedzia">Wybierz narzędzie <span aria-hidden="true">↓</span></a>
       </div>
@@ -121,7 +130,10 @@
             <span class="tool-tags">
               <span>Wokal i&nbsp;podkład</span><span>Tempo i&nbsp;tonacja</span><span>Przycinanie</span><span>MP3 · WAV</span>
             </span>
-            <span class="tool-go">audio.pizu.pl <span aria-hidden="true">→</span></span>
+            <span class="tool-foot">
+              <span class="tool-go">Otwórz narzędzia audio <span aria-hidden="true">→</span></span>
+              <span class="tool-url">audio.pizu.pl</span>
+            </span>
           </a>
         </li>
         <li>
@@ -134,7 +146,10 @@
             <span class="tool-tags">
               <span>JPG · PNG · WebP · HEIC</span><span>Kompresja</span><span>Kadrowanie</span><span>Znak wodny</span>
             </span>
-            <span class="tool-go">grafika.pizu.pl <span aria-hidden="true">→</span></span>
+            <span class="tool-foot">
+              <span class="tool-go">Otwórz narzędzia do zdjęć <span aria-hidden="true">→</span></span>
+              <span class="tool-url">grafika.pizu.pl</span>
+            </span>
           </a>
         </li>
         <li>
@@ -147,7 +162,10 @@
             <span class="tool-tags">
               <span>Scal i&nbsp;podziel</span><span>Kompresja</span><span>Podpis</span><span>PDF ↔ Word</span>
             </span>
-            <span class="tool-go">pdf.pizu.pl <span aria-hidden="true">→</span></span>
+            <span class="tool-foot">
+              <span class="tool-go">Otwórz narzędzia PDF <span aria-hidden="true">→</span></span>
+              <span class="tool-url">pdf.pizu.pl</span>
+            </span>
           </a>
         </li>
       </ul>
@@ -159,7 +177,7 @@
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" /></svg>
           <h3>Pliki zostają u&nbsp;Ciebie</h3>
-          <p>Wszystko dzieje się na Twoim urządzeniu. Nic nie trafia na serwer, więc nie ma czego wykraść.</p>
+          <p>Twoje pliki są przetwarzane lokalnie w&nbsp;przeglądarce, bez przesyłania ich na serwer. <a href="#prywatnosc">Jak to działa</a></p>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2.5" /><path d="M3 9h18M6.5 6.8h.01M9 6.8h.01" /></svg>
@@ -173,10 +191,41 @@
         </li>
       </ul>
     </section>
+
+    <!-- Opis zgodny z zakładkami „Prywatność” w oknach „O aplikacji” narzędzi — przy zmianach w narzędziach zaktualizuj też tutaj. -->
+    <section id="prywatnosc" class="privacy" aria-labelledby="prywatnosc-tytul">
+      <div class="section-head">
+        <h2 id="prywatnosc-tytul">Prywatność — jak to działa</h2>
+        <p>Co dzieje się z&nbsp;Twoimi plikami i&nbsp;co strony Pizu pobierają oraz zapisują.</p>
+      </div>
+      <dl class="privacy-list">
+        <div>
+          <dt>Twoje pliki</dt>
+          <dd>PizuAudio, PizuGrafika i&nbsp;PizuPDF obrabiają pliki w&nbsp;Twojej przeglądarce, na Twoim urządzeniu. Ani pliki, ani wyniki nie są przesyłane na nasz serwer ani do innych firm.</dd>
+        </div>
+        <div>
+          <dt>Co pobiera przeglądarka</dt>
+          <dd>Przy otwarciu narzędzia — jego stronę z&nbsp;serwera Pizu, a&nbsp;przy niektórych funkcjach dodatkowe moduły z&nbsp;tego samego serwera (np. obsługę zdjęć HEIC i&nbsp;rozpoznawanie tekstu w&nbsp;PDF). Wyjątek: model AI do oddzielania wokalu w&nbsp;PizuAudio (ok. 172&nbsp;MB) przy pierwszym użyciu pobierany jest z&nbsp;serwisu Hugging Face, który widzi wtedy Twój adres IP — ale nie Twoje nagrania.</dd>
+        </div>
+        <div>
+          <dt>Czy potrzebny jest internet</dt>
+          <dd>Tak — do otwarcia narzędzia i&nbsp;pobrania potrzebnych modułów. Sama obróbka plików odbywa się już na Twoim urządzeniu.</dd>
+        </div>
+        <div>
+          <dt>Co zostaje w&nbsp;przeglądarce</dt>
+          <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
+        </div>
+        <div>
+          <dt>Bez śledzenia</dt>
+          <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki.</dd>
+        </div>
+      </dl>
+      <p class="privacy-more">Szczegóły każdego narzędzia znajdziesz w&nbsp;jego oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Prywatność”. Pytania: <a href="mailto:kontakt@ptaszynski.pl">kontakt@ptaszynski.pl</a></p>
+    </section>
   </main>
 
   <footer class="foot">
-    <p>© 2026 pizu.pl</p>
+    <p>© 2026 pizu.pl · <a href="#prywatnosc">Prywatność</a></p>
     <p class="foot-nic">Szukasz strony o&nbsp;niczym? Przeprowadziła się na <a href="https://nic.ptaszynski.pl/">nic.ptaszynski.pl</a>.</p>
   </footer>
 

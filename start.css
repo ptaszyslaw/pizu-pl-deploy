@@ -14,7 +14,11 @@
   --brand-deep: #c92f3a;
   --brand-soft: #ffd3d5;
   --brand-ink: light-dark(#c22f39, #f47279);
-  --glow: light-dark(rgba(239, 66, 73, 0.12), rgba(239, 66, 73, 0.16));
+  /* Czerwone przyciski z białym napisem: te same odcienie co w PizuPDF, ≥ 4,5 : 1 w obu motywach
+     (#ef4249 z bielą ma tylko 3,8 : 1, więc zostaje dla logo i ilustracji). */
+  --button: #cf2a34;
+  --button-hover: #b4242d;
+  --glow:light-dark(rgba(239, 66, 73, 0.12), rgba(239, 66, 73, 0.16));
   --shadow-color: light-dark(rgba(20, 24, 33, 0.07), rgba(0, 0, 0, 0.3));
   --shadow: 0 1px 2px var(--shadow-color), 0 10px 30px var(--shadow-color);
   --shadow-hover: 0 2px 4px var(--shadow-color), 0 18px 40px var(--shadow-color);
@@ -39,6 +43,8 @@
   --line: light-dark(#7d8491, #7f8694);
   --chip: light-dark(#e3e6eb, #2c3039);
   --brand-ink: light-dark(#a3202a, #ff8a8f);
+  --button: #c11a24;
+  --button-hover: #9d141c;
   --focus: light-dark(#1d4ed8, #a5c0ff);
   --audio: light-dark(#5124b5, #d0c0ff);
   --grafika: light-dark(#0a5a54, #86f2e4);
@@ -190,7 +196,7 @@ main,
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   align-items: center;
   gap: 40px;
-  padding-block: 40px 72px;
+  padding-block: 24px 56px;
 }
 
 .eyebrow {
@@ -203,7 +209,7 @@ main,
 }
 
 .hero h1 {
-  font-size: clamp(2.15rem, 5.2vw, 3.6rem);
+  font-size: clamp(2.15rem, 5.2vw, 3.3rem);
   font-weight: 800;
   letter-spacing: -0.025em;
   text-wrap: balance;
@@ -228,18 +234,18 @@ main,
   margin-top: 30px;
   padding: 13px 22px;
   border-radius: 12px;
-  background: var(--brand);
+  background: var(--button);
   color: #fff;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(239, 66, 73, 0.3);
+  box-shadow: 0 6px 18px rgba(207, 42, 52, 0.3);
   transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
 }
 
 .button:hover {
-  background: var(--brand-deep);
+  background: var(--button-hover);
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(239, 66, 73, 0.35);
+  box-shadow: 0 10px 24px rgba(207, 42, 52, 0.35);
 }
 
 .hero-art {
@@ -249,7 +255,7 @@ main,
 
 .mascot {
   width: 100%;
-  max-width: 420px;
+  max-width: 360px;
   height: auto;
   overflow: visible;
 }
@@ -405,11 +411,23 @@ main,
   font-weight: 600;
 }
 
-.tool-go {
+/* Zakończenie karty: co się stanie po kliknięciu, a pod spodem adres mniejszym tekstem. */
+.tool-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   margin-top: auto;
   padding-top: 8px;
+}
+
+.tool-go {
   color: var(--tool);
   font-weight: 700;
+}
+
+.tool-url {
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 .tool-go span {
@@ -459,6 +477,58 @@ main,
   font-size: 0.95rem;
 }
 
+.why-list a,
+.privacy a,
+.foot a {
+  color: var(--brand-ink);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* ── prywatność ────────────────────────────────────────── */
+
+.privacy {
+  margin-bottom: 56px;
+  scroll-margin-top: 16px;
+}
+
+/* Jedna karta z wierszami: pytanie po lewej, odpowiedź po prawej (na telefonie jedno pod drugim). */
+.privacy-list {
+  margin: 0;
+  padding: 6px 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.privacy-list div {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 4px 28px;
+  padding-block: 18px;
+}
+
+.privacy-list div + div {
+  border-top: 1px solid var(--line);
+}
+
+.privacy-list dt {
+  font-weight: 700;
+}
+
+.privacy-list dd {
+  max-width: 46em;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.privacy-more {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 /* ── stopka ────────────────────────────────────────────── */
 
 .foot {
@@ -470,12 +540,6 @@ main,
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.9rem;
-}
-
-.foot-nic a {
-  color: var(--brand-ink);
-  font-weight: 600;
-  text-underline-offset: 3px;
 }
 
 /* ── animacje ──────────────────────────────────────────── */
@@ -746,19 +810,65 @@ main,
 
 /* ── wąskie ekrany ─────────────────────────────────────── */
 
+/* Na telefonie i tablecie tekst idzie pierwszy, a ptak zmniejsza się do znaczka obok nadtytułu —
+   wybór narzędzia mieści się na pierwszym ekranie. display: contents rozkłada elementy .hero-text
+   po siatce .hero, więc kolejność w HTML (tekst, potem ilustracja) zostaje bez zmian. */
 @media (max-width: 860px) {
   .hero {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding-block: 16px 56px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "eyebrow art"
+      "title title"
+      "lead lead"
+      "cta cta";
+    gap: 0 16px;
+    padding-block: 4px 40px;
+  }
+
+  .hero-text {
+    display: contents;
+  }
+
+  .eyebrow {
+    grid-area: eyebrow;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  .hero h1 {
+    grid-area: title;
+    margin-top: 10px;
+  }
+
+  .lead {
+    grid-area: lead;
+    margin-top: 14px;
+    font-size: 1.05rem;
+  }
+
+  .hero .button {
+    grid-area: cta;
+    justify-self: start;
+    margin-top: 22px;
   }
 
   .hero-art {
-    order: -1;
+    grid-area: art;
   }
 
+  /* bez plakietek i obręczy: przy tej wielkości byłyby tylko drobnymi plamkami */
   .mascot {
-    max-width: 260px;
+    width: 5.5rem;
+    margin: -0.4rem -0.5rem;
+  }
+
+  .mascot .ring,
+  .mascot .badge {
+    display: none;
+  }
+
+  .section-head {
+    margin-bottom: 20px;
   }
 
   .why-list {
@@ -801,5 +911,15 @@ main,
 
   .why-list {
     padding: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .privacy-list {
+    padding: 4px 22px;
+  }
+
+  .privacy-list div {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
