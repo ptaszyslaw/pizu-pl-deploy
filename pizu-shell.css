@@ -1,5 +1,5 @@
 /* Pizu — wspólna belka (<pizu-header>) i stopka (<pizu-footer>) — patrz pizu-shell.js.
-   Jedno źródło: shell/ w repozytorium ptaszynski-pl; scripts/sync-shell.mjs kopiuje do każdej strony.
+   Jedno źródło: shell/ w projekcie pizu-pl; scripts/sync-shell.mjs kopiuje do każdej strony.
 
    Kolory jak na pizu.pl. Jasny i ciemny wariant wybiera light-dark() według color-scheme strony
    (pizu.pl: data-theme, narzędzia: klasa .dark); wysoki kontrast: data-contrast="high" albo .contrast-high.

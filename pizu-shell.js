@@ -1,7 +1,7 @@
 /**
  * Pizu — wspólna belka i stopka wszystkich stron: pizu.pl, PizuAudio, PizuGrafika, PizuPDF.
  *
- * Jedno źródło: ten plik i pizu-shell.css w katalogu shell/ repozytorium ptaszynski-pl.
+ * Jedno źródło: ten plik i pizu-shell.css w katalogu shell/ projektu pizu-pl.
  * scripts/sync-shell.mjs kopiuje je do każdej strony — tam ich nie edytuj.
  * Bez frameworka i zależności: działa w statycznym HTML i w React (zwykłe elementy HTML).
  *
@@ -59,7 +59,7 @@
         { slug: 'podziel-pdf', name: 'Podziel PDF', desc: 'Pojedyncze strony lub zakresy' },
         { slug: 'kompresuj-pdf', name: 'Kompresuj PDF', desc: 'Mniejszy plik, ta sama treść' },
         { slug: 'pdf-na-word', name: 'PDF do Word', desc: 'Także skany, z rozpoznawaniem tekstu' },
-        { slug: 'word-na-pdf', name: 'Word do PDF', desc: 'Dokument DOCX jako PDF' },
+        { slug: 'word-na-pdf', name: 'Tekst z Worda do PDF', desc: 'Sam tekst z DOCX, bez układu' },
         { slug: 'pdf-na-obraz', name: 'PDF na obraz', desc: 'Strony jako PNG lub JPG' },
         { slug: 'obraz-na-pdf', name: 'Obraz na PDF', desc: 'Zdjęcia i skany w jednym PDF' },
         { slug: 'podpisz-pdf', name: 'Podpisz PDF', desc: 'Podpis odręczny lub inicjały' },
