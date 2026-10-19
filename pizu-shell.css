@@ -1,0 +1,483 @@
+/* Pizu — wspólna belka (<pizu-header>) i stopka (<pizu-footer>) — patrz pizu-shell.js.
+   Jedno źródło: shell/ w repozytorium ptaszynski-pl; scripts/sync-shell.mjs kopiuje do każdej strony.
+
+   Kolory jak na pizu.pl. Jasny i ciemny wariant wybiera light-dark() według color-scheme strony
+   (pizu.pl: data-theme, narzędzia: klasa .dark); wysoki kontrast: data-contrast="high" albo .contrast-high.
+   Rozmiary w rem — rosną razem z ustawieniem „Wielkość tekstu”. */
+
+:root {
+  --pz-ink: light-dark(#1d2129, #eef0f4);
+  --pz-muted: light-dark(#5b6170, #a6acb9);
+  --pz-surface: light-dark(#ffffff, #1b1e25);
+  --pz-line: light-dark(#e3e6eb, #2a2e37);
+  --pz-chip: light-dark(#f0f2f5, #23262e);
+  --pz-brand-ink: light-dark(#c22f39, #f47279);
+  --pz-brand-tile: light-dark(#ffe3e5, #3a1f23);
+  --pz-focus: light-dark(#2563eb, #7aa2ff);
+  --pz-shadow-color: light-dark(rgba(20, 24, 33, 0.12), rgba(0, 0, 0, 0.5));
+  /* szerokość treści belki i stopki: pełna, żeby logo stało w tym samym miejscu na każdej stronie
+     (strona może ją ograniczyć) */
+  --pz-max: none;
+}
+
+:root[data-contrast="high"],
+:root.contrast-high {
+  --pz-ink: light-dark(#0b0d12, #ffffff);
+  --pz-muted: light-dark(#343944, #dde0e7);
+  --pz-line: light-dark(#7d8491, #7f8694);
+  --pz-chip: light-dark(#e3e6eb, #2c3039);
+  --pz-brand-ink: light-dark(#a3202a, #ff8a8f);
+  --pz-focus: light-dark(#1d4ed8, #a5c0ff);
+}
+
+pizu-header,
+pizu-footer {
+  display: block;
+  color: var(--pz-ink);
+  background: var(--pz-surface);
+  line-height: 1.4;
+}
+
+pizu-header *,
+pizu-footer * {
+  box-sizing: border-box;
+}
+
+pizu-header {
+  position: relative;
+  z-index: 40;
+  border-bottom: 1px solid var(--pz-line);
+}
+
+/* przed załadowaniem skryptu: ta sama wysokość, żeby strona nie skakała */
+pizu-header:not(:defined) {
+  min-height: 4rem;
+}
+
+pizu-footer {
+  border-top: 1px solid var(--pz-line);
+}
+
+pizu-header :focus-visible,
+pizu-footer :focus-visible {
+  outline: 3px solid var(--pz-focus);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.pz-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── logo ──────────────────────────────────────────────── */
+
+.pz-mark {
+  flex: none;
+  width: 2.1rem;
+  height: 2.1rem;
+}
+
+.pz-c-brand { fill: #ef4249; }
+.pz-c-white { fill: #fff; }
+.pz-c-beak { fill: #ffd3d5; }
+.pz-c-ink { fill: #262b36; }
+.pz-c-wing { fill: #c92f3a; }
+
+.pz-icon,
+.pz-chevron {
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── belka ─────────────────────────────────────────────── */
+
+.pz-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px 16px;
+  max-width: var(--pz-max);
+  min-height: 4rem;
+  margin-inline: auto;
+  padding: 10px 20px;
+}
+
+.pz-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 6px 4px 0;
+  color: var(--pz-ink);
+  text-decoration: none;
+}
+
+.pz-logo-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.pz-nav-list,
+.pz-panel-list,
+.pz-mobile-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pz-nav-list {
+  display: flex;
+  gap: 2px;
+}
+
+.pz-nav-item {
+  position: relative;
+}
+
+.pz-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 11px 8px 13px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--pz-muted);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pz-nav-btn:hover,
+.pz-nav-btn[aria-expanded="true"] {
+  background: var(--pz-chip);
+  color: var(--pz-ink);
+}
+
+.pz-nav-btn.is-current {
+  color: var(--pz-brand-ink);
+}
+
+.pz-chevron {
+  width: 1em;
+  height: 1em;
+  stroke-width: 2.2;
+}
+
+.pz-nav-btn[aria-expanded="true"] .pz-chevron {
+  transform: rotate(180deg);
+}
+
+/* narzędzie pracuje w tle (atrybut busy) */
+.pz-spinner {
+  flex: none;
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 6px;
+  vertical-align: -0.1em;
+  fill: none;
+  stroke: var(--pz-brand-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  animation: pz-spin 0.9s linear infinite;
+}
+
+@keyframes pz-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* „Ograniczone animacje” z panelu „Wygląd” (narzędzia: .reduce-motion, pizu.pl: data-motion) */
+:root.reduce-motion .pz-spinner,
+:root[data-motion="reduced"] .pz-spinner {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not(.motion-full):not([data-motion="full"]) .pz-spinner {
+    animation: none;
+  }
+}
+
+/* ── rozwijane kategorie ───────────────────────────────── */
+
+.pz-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 21rem;
+  padding: 8px;
+  border: 1px solid var(--pz-line);
+  border-radius: 16px;
+  background: var(--pz-surface);
+  box-shadow: 0 2px 4px var(--pz-shadow-color), 0 18px 40px var(--pz-shadow-color);
+}
+
+.pz-panel[hidden] {
+  display: none;
+}
+
+.pz-panel-wide {
+  width: 36rem;
+}
+
+/* dwie kolumny czytane z góry na dół (PDF: 10 narzędzi → 5 wierszy), żeby pokrewne leżały obok siebie */
+.pz-panel-wide .pz-panel-list {
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(5, auto);
+}
+
+.pz-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 12px;
+  margin-bottom: 6px;
+  padding: 6px 10px 10px;
+  border-bottom: 1px solid var(--pz-line);
+}
+
+.pz-product {
+  color: var(--pz-ink);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+}
+
+.pz-product:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* nazwa narzędzia w kolorze marki — jak w logo narzędzi (ZASADY-MARKI.md) */
+.pz-product-name {
+  color: var(--pz-brand-ink);
+}
+
+.pz-panel-about {
+  color: var(--pz-muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.pz-panel-list {
+  display: grid;
+  gap: 2px;
+}
+
+.pz-tool {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--pz-ink);
+  text-decoration: none;
+}
+
+.pz-tool:hover {
+  background: var(--pz-chip);
+}
+
+.pz-tool[aria-current="page"] {
+  background: var(--pz-brand-tile);
+}
+
+.pz-tool-name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.pz-tool[aria-current="page"] .pz-tool-name {
+  color: var(--pz-brand-ink);
+}
+
+.pz-tool-desc {
+  display: block;
+  margin-top: 1px;
+  color: var(--pz-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+/* ── przyciski po prawej ───────────────────────────────── */
+
+.pz-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.pz-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid var(--pz-line);
+  border-radius: 999px;
+  background: var(--pz-surface);
+  color: var(--pz-ink);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pz-btn:hover,
+.pz-btn[aria-expanded="true"] {
+  background: var(--pz-chip);
+}
+
+.pz-menu-btn {
+  display: none;
+}
+
+/* ── menu na telefonie ─────────────────────────────────── */
+
+.pz-mobile {
+  max-width: var(--pz-max);
+  margin-inline: auto;
+  padding: 4px 20px 14px;
+}
+
+.pz-mobile[hidden] {
+  display: none;
+}
+
+.pz-mobile-group {
+  padding-block: 10px;
+}
+
+.pz-mobile-group + .pz-mobile-group {
+  border-top: 1px solid var(--pz-line);
+}
+
+.pz-mobile-title {
+  margin: 0 0 4px;
+}
+
+.pz-mobile-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pz-mobile-list .pz-tool {
+  padding: 7px 12px;
+  border: 1px solid var(--pz-line);
+  border-radius: 999px;
+}
+
+.pz-mobile-list .pz-tool-name {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 880px) {
+  .pz-nav {
+    display: none;
+  }
+
+  .pz-menu-btn {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 881px) {
+  .pz-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .pz-bar {
+    padding-inline: 16px;
+  }
+
+  /* na wąskim ekranie „Wygląd” zostaje samą ikoną (nazwa w aria-label) */
+  .pz-settings .pz-btn-text {
+    display: none;
+  }
+
+  .pz-settings {
+    padding-inline: 9px;
+  }
+
+  .pz-mobile {
+    padding-inline: 16px;
+  }
+}
+
+/* ── stopka ────────────────────────────────────────────── */
+
+.pz-foot {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  max-width: var(--pz-max);
+  margin-inline: auto;
+  padding: 22px 20px 26px;
+  color: var(--pz-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.pz-foot-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.pz-foot a,
+.pz-foot button {
+  padding: 4px 4px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pz-foot a:hover,
+.pz-foot button:hover {
+  color: var(--pz-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pz-foot .pz-foot-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--pz-ink);
+  font-weight: 800;
+}
+
+.pz-foot-brand .pz-mark {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.pz-sep {
+  padding-inline: 6px;
+  color: var(--pz-line);
+}
+
+.pz-foot-meta {
+  font-size: 0.82rem;
+}

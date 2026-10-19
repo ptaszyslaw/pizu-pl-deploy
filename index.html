@@ -27,38 +27,24 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
   <script src="settings-init.js?v=d008af4809"></script>
-  <link rel="stylesheet" href="start.css?v=5b6ad667fa" />
-  <script src="start.js?v=20a35c500a" defer></script>
+  <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
+  <link rel="stylesheet" href="pizu-shell.css?v=b05e7eefa1" />
+  <link rel="stylesheet" href="start.css?v=d1aaba8037" />
+  <script src="pizu-shell.js?v=3ccb3a5f0b" defer></script>
+  <script src="start.js?v=8736ad5cbf" defer></script>
 </head>
 <body>
   <a class="skip" href="#narzedzia">Przejdź do narzędzi</a>
 
-  <header class="top">
-    <a class="brand" href="./" aria-label="Pizu — strona główna">
-      <svg class="brand-logo" viewBox="0 0 200 200" aria-hidden="true">
-        <circle cx="100" cy="100" r="96" class="c-brand" />
-        <g transform="translate(34 40) scale(0.66)">
-          <ellipse cx="95" cy="105" rx="55" ry="50" class="c-white" />
-          <circle cx="105" cy="60" r="45" class="c-white" />
-          <path d="M142 48 L180 66 L140 88 C147 74 147 60 142 48 Z" class="c-beak" />
-          <circle cx="120" cy="55" r="9" class="c-ink" />
-          <path d="M20 140 C36 92 88 74 128 90 C138 102 134 118 120 130 C88 148 44 150 20 140 Z" class="c-wing" />
-        </g>
-      </svg>
-      <span class="brand-name">Pizu</span>
-    </a>
-    <div class="top-actions">
-      <nav class="top-nav" aria-label="Narzędzia">
-        <a href="https://audio.pizu.pl/">Audio</a>
-        <a href="https://grafika.pizu.pl/">Grafika</a>
-        <a href="https://pdf.pizu.pl/">PDF</a>
-      </nav>
-      <button class="settings-open" type="button" aria-haspopup="dialog" aria-label="Wygląd i dostępność">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" /><circle cx="16" cy="7" r="2.2" /><circle cx="10" cy="17" r="2.2" /></svg>
-        <span class="settings-open-text">Wygląd</span>
-      </button>
-    </div>
-  </header>
+  <pizu-header site="home" settings>
+    <!-- bez JavaScriptu zostają zwykłe linki; skrypt zamienia je na pełną belkę z menu -->
+    <nav class="pz-bar" aria-label="Narzędzia Pizu">
+      <a class="pz-logo" href="https://pizu.pl/"><span class="pz-logo-name">Pizu</span></a>
+      <a href="https://audio.pizu.pl/">PizuAudio</a>
+      <a href="https://grafika.pizu.pl/">PizuGrafika</a>
+      <a href="https://pdf.pizu.pl/">PizuPDF</a>
+    </nav>
+  </pizu-header>
 
   <main>
     <section class="hero">
@@ -147,7 +133,7 @@
               <span>JPG · PNG · WebP · HEIC</span><span>Kompresja</span><span>Kadrowanie</span><span>Kody QR</span>
             </span>
             <span class="tool-foot">
-              <span class="tool-go">Otwórz narzędzia do zdjęć <span aria-hidden="true">→</span></span>
+              <span class="tool-go">Otwórz narzędzia do zdjęć i grafiki <span aria-hidden="true">→</span></span>
               <span class="tool-url">grafika.pizu.pl</span>
             </span>
           </a>
@@ -177,7 +163,7 @@
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" /></svg>
           <h3>Pliki zostają u&nbsp;Ciebie</h3>
-          <p>Twoje pliki są przetwarzane lokalnie w&nbsp;przeglądarce, bez przesyłania ich na serwer. <a href="#prywatnosc">Jak to działa</a></p>
+          <p>Twoje pliki są przetwarzane lokalnie w&nbsp;przeglądarce, bez przesyłania ich na serwer. <button class="link-button" type="button" data-about="privacy" aria-haspopup="dialog">Jak to działa</button></p>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2.5" /><path d="M3 9h18M6.5 6.8h.01M9 6.8h.01" /></svg>
@@ -192,41 +178,6 @@
       </ul>
     </section>
 
-    <!-- Opis zgodny z zakładkami „Prywatność” w oknach „O aplikacji” narzędzi — przy zmianach w narzędziach zaktualizuj też tutaj. -->
-    <section id="prywatnosc" class="privacy" aria-labelledby="prywatnosc-tytul">
-      <div class="section-head">
-        <h2 id="prywatnosc-tytul">Prywatność — jak to działa</h2>
-        <p>Co dzieje się z&nbsp;Twoimi plikami i&nbsp;co strony Pizu pobierają oraz zapisują.</p>
-      </div>
-      <dl class="privacy-list">
-        <div>
-          <dt>Twoje pliki</dt>
-          <dd>PizuAudio, PizuGrafika i&nbsp;PizuPDF obrabiają pliki w&nbsp;Twojej przeglądarce, na Twoim urządzeniu. Ani pliki, ani wyniki nie są przesyłane na nasz serwer ani do innych firm.</dd>
-        </div>
-        <div>
-          <dt>Co pobiera przeglądarka</dt>
-          <dd>Przy otwarciu narzędzia — jego stronę z&nbsp;serwera Pizu, a&nbsp;przy niektórych funkcjach dodatkowe moduły z&nbsp;tego samego serwera (np. obsługę zdjęć HEIC i&nbsp;rozpoznawanie tekstu w&nbsp;PDF). Wyjątek: model AI do oddzielania wokalu w&nbsp;PizuAudio (ok. 172&nbsp;MB) przy pierwszym użyciu pobierany jest z&nbsp;serwisu Hugging Face, który widzi wtedy Twój adres IP — ale nie Twoje nagrania.</dd>
-        </div>
-        <div>
-          <dt>Czy potrzebny jest internet</dt>
-          <dd>Tak — do otwarcia narzędzia i&nbsp;pobrania potrzebnych modułów. Sama obróbka plików odbywa się już na Twoim urządzeniu.</dd>
-        </div>
-        <div>
-          <dt>Co zostaje w&nbsp;przeglądarce</dt>
-          <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
-        </div>
-        <div>
-          <dt>Bez śledzenia</dt>
-          <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki.</dd>
-        </div>
-        <div>
-          <dt>Wsparcie przez Suppi</dt>
-          <dd>Link „Wesprzyj Pizu” prowadzi do serwisu Suppi (Patronite). Strony Pizu łączą się z&nbsp;nim dopiero, gdy go klikniesz. Wpłatę obsługuje Suppi — strony Pizu nie mają dostępu do danych płatności.</dd>
-        </div>
-      </dl>
-      <p class="privacy-more">Szczegóły każdego narzędzia znajdziesz w&nbsp;jego oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Prywatność”. Pytania: <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
-    </section>
-
     <!-- Zwykły link do Suppi zamiast ich widżetu: widżet wczytywałby obrazek z suppi.pl przy każdej wizycie. -->
     <section id="wsparcie" class="support" aria-labelledby="wsparcie-tytul">
       <svg class="support-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2v2M14 2v2M6 2v2" /><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" /></svg>
@@ -238,9 +189,74 @@
     </section>
   </main>
 
-  <footer class="foot">
-    <p>© 2026 pizu.pl · <a href="#prywatnosc">Prywatność</a> · <a href="https://suppi.pl/pizu" target="_blank" rel="noopener">Wesprzyj Pizu<span class="visually-hidden"> na Suppi (otwiera się w nowej karcie)</span></a></p>
-  </footer>
+  <pizu-footer>
+    <p class="pz-foot">© 2026 Pizu · <a href="https://audio.pizu.pl/">PizuAudio</a> · <a href="https://grafika.pizu.pl/">PizuGrafika</a> · <a href="https://pdf.pizu.pl/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
+  </pizu-footer>
+
+  <!-- Okno „O Pizu” — jak „O aplikacji” w narzędziach. Prywatność streszcza zakładki „Prywatność” narzędzi:
+       przy zmianach w narzędziach (co pobierają, co zapisują w przeglądarce) zaktualizuj też tutaj. -->
+  <dialog class="about" aria-labelledby="about-title">
+    <div class="settings-body">
+      <div class="settings-head">
+        <h2 id="about-title">O Pizu</h2>
+        <button class="icon-button" type="button" data-dialog-close aria-label="Zamknij">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Informacje o Pizu">
+        <button type="button" role="tab" id="tab-privacy" aria-controls="panel-privacy" aria-selected="true" data-tab="privacy">Prywatność</button>
+        <button type="button" role="tab" id="tab-licenses" aria-controls="panel-licenses" aria-selected="false" tabindex="-1" data-tab="licenses">Licencje</button>
+        <button type="button" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1" data-tab="contact">Kontakt</button>
+      </div>
+
+      <section class="tab-panel" role="tabpanel" id="panel-privacy" aria-labelledby="tab-privacy" tabindex="0">
+        <p class="about-lead">Twoje pliki są przetwarzane lokalnie w&nbsp;przeglądarce, bez przesyłania ich na serwer. Szczegóły:</p>
+        <dl class="privacy-list">
+          <div>
+            <dt>Twoje pliki</dt>
+            <dd>PizuAudio, PizuGrafika i&nbsp;PizuPDF obrabiają pliki w&nbsp;Twojej przeglądarce, na Twoim urządzeniu. Ani pliki, ani wyniki nie są przesyłane na nasz serwer ani do innych firm.</dd>
+          </div>
+          <div>
+            <dt>Co pobiera przeglądarka</dt>
+            <dd>Przy otwarciu narzędzia — jego stronę z&nbsp;serwera Pizu, a&nbsp;przy niektórych funkcjach dodatkowe moduły z&nbsp;tego samego serwera (np. obsługę zdjęć HEIC i&nbsp;rozpoznawanie tekstu w&nbsp;PDF). Wyjątek: model AI do oddzielania wokalu w&nbsp;PizuAudio (ok. 172&nbsp;MB) przy pierwszym użyciu pobierany jest z&nbsp;serwisu Hugging Face, który widzi wtedy Twój adres IP — ale nie Twoje nagrania.</dd>
+          </div>
+          <div>
+            <dt>Czy potrzebny jest internet</dt>
+            <dd>Tak — do otwarcia narzędzia i&nbsp;pobrania potrzebnych modułów. Sama obróbka plików odbywa się już na Twoim urządzeniu.</dd>
+          </div>
+          <div>
+            <dt>Co zostaje w&nbsp;przeglądarce</dt>
+            <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
+          </div>
+          <div>
+            <dt>Bez śledzenia</dt>
+            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki.</dd>
+          </div>
+          <div>
+            <dt>Wsparcie przez Suppi</dt>
+            <dd>Link „Wesprzyj Pizu” prowadzi do serwisu Suppi (Patronite). Strony Pizu łączą się z&nbsp;nim dopiero, gdy go klikniesz. Wpłatę obsługuje Suppi — strony Pizu nie mają dostępu do danych płatności.</dd>
+          </div>
+        </dl>
+        <p class="privacy-more">Szczegóły każdego narzędzia znajdziesz w&nbsp;jego oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Prywatność”.</p>
+      </section>
+
+      <section class="tab-panel" role="tabpanel" id="panel-licenses" aria-labelledby="tab-licenses" tabindex="0" hidden>
+        <p>Strona pizu.pl to własny kod (HTML, CSS i&nbsp;JavaScript) — bez bibliotek, czcionek ani skryptów z&nbsp;innych serwerów. Każde narzędzie ma własną listę licencji w&nbsp;oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Licencje”.</p>
+        <details class="license">
+          <summary>Ikona kubka (sekcja „Wesprzyj Pizu”) — Lucide, licencja ISC</summary>
+          <p>Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.</p>
+          <p>Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.</p>
+          <p>THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</p>
+        </details>
+      </section>
+
+      <section class="tab-panel" role="tabpanel" id="panel-contact" aria-labelledby="tab-contact" tabindex="0" hidden>
+        <p>Pytania, uwagi i&nbsp;zgłoszenia błędów: <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a>. Przy błędzie podaj nazwę narzędzia i&nbsp;numer wersji — jest w&nbsp;stopce każdego narzędzia.</p>
+        <p>Narzędzia Pizu są darmowe i&nbsp;bez reklam. Jeśli Ci pomogły, możesz <a href="https://suppi.pl/pizu" target="_blank" rel="noopener">postawić kawę na Suppi<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>.</p>
+      </section>
+    </div>
+  </dialog>
 
   <!-- Panel „Wygląd i dostępność” — te same opcje i opisy co w narzędziach Pizu.
        Zmiany działają od razu i są zapisywane w tej przeglądarce (start.js). -->
