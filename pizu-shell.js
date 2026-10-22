@@ -62,6 +62,7 @@
         { slug: 'word-na-pdf', name: 'Tekst z Worda do PDF', desc: 'Sam tekst z DOCX, bez układu' },
         { slug: 'pdf-na-obraz', name: 'PDF na obraz', desc: 'Strony jako PNG lub JPG' },
         { slug: 'obraz-na-pdf', name: 'Obraz na PDF', desc: 'Zdjęcia i skany w jednym PDF' },
+        { slug: 'faktura-xml-na-pdf', name: 'Faktura XML na PDF', desc: 'Czytelny PDF z e-faktury (KSeF)' },
         { slug: 'podpisz-pdf', name: 'Podpisz PDF', desc: 'Podpis odręczny lub inicjały' },
         { slug: 'edytuj-pdf', name: 'Edytuj PDF', desc: 'Tekst i adnotacje' },
         { slug: 'zamaz-dane-w-pdf', name: 'Zamaż dane', desc: 'Trwale, bez możliwości odzyskania' },
