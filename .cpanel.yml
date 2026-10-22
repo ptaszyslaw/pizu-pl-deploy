@@ -4,7 +4,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html/pizu/
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp 404.css 404.html favicon.svg index.html og-image.png pizu-shell.css pizu-shell.js robots.txt settings-init.js sitemap.xml start.css start.js $DEPLOYPATH
+    - /bin/cp 13fb410abf564564a5251e613378cbf2.txt 404.css 404.html favicon.svg index.html og-image.png pizu-shell.css pizu-shell.js robots.txt settings-init.js sitemap.xml start.css start.js $DEPLOYPATH
     - /bin/touch $DEPLOYPATH.htaccess
     - /bin/sed -i '/BEGIN pizu.pl naglowki/,/END pizu.pl naglowki/d' $DEPLOYPATH.htaccess
     - /bin/cat htaccess-naglowki.conf >> $DEPLOYPATH.htaccess
