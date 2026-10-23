@@ -30,9 +30,9 @@
   <script src="settings-init.js?v=d008af4809"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
   <link rel="stylesheet" href="pizu-shell.css?v=130de81fc6">
-  <link rel="stylesheet" href="start.css?v=e7d99d0518">
+  <link rel="stylesheet" href="start.css?v=0d80e760e8">
   <script src="pizu-shell.js?v=9f5e99d223" defer></script>
-  <script src="start.js?v=8736ad5cbf" defer></script>
+  <script src="start.js?v=29571391bf" defer></script>
 </head>
 <body>
   <a class="skip" href="#narzedzia">Przejdź do narzędzi</a>
@@ -205,23 +205,29 @@
           <p>Nie musisz wierzyć nam na słowo. Na komputerze, w&nbsp;Chrome, Edge albo Firefoksie, zajmie to minutę.</p>
         </div>
       </div>
-      <div class="check-body">
-        <!-- Bez filtra po metodzie: lista od otwarcia panelu jest krótka, a filtr method:POST ukryłby PUT czy WebSocket.
-             role="list", bo Safari z VoiceOver nie traktuje listy z list-style: none jak listy (wyjątek w scripts/w3c.mjs). -->
-        <ol class="check-steps" role="list">
-          <li>Otwórz narzędzie, np. <a href="https://pdf.pizu.pl/zamaz-dane-w-pdf/" target="_blank" rel="noopener">zamazywanie danych w&nbsp;PDF</a> (w&nbsp;nowej karcie — ta instrukcja zostanie tutaj), i&nbsp;naciśnij <kbd>F12</kbd>. Na Macu: <kbd>Option&nbsp;<span aria-hidden="true">⌥</span></kbd>&nbsp;+ <kbd>Command&nbsp;<span aria-hidden="true">⌘</span></kbd>&nbsp;+&nbsp;<kbd>I</kbd>.</li>
-          <li>W&nbsp;panelu, który się otworzy, wybierz kartę <strong>Sieć</strong> (Network). Gdy panel jest wąski, bywa schowana pod przyciskiem <strong>»</strong>.</li>
-          <li>Wrzuć plik i&nbsp;go obrób. Na liście pojawi się każde połączenie, które strona nawiąże od tej chwili.</li>
-          <li>Przejrzyj listę: nie ma na niej nic, co wysyła Twój plik — najwyżej pobieranie części narzędzia, opisane w&nbsp;ramce.</li>
-        </ol>
-        <div class="check-notes">
-          <h3>Co możesz tam zobaczyć</h3>
-          <ul>
-            <li>Pobieranie (GET) części narzędzia z&nbsp;jego serwera, np. pdf.pizu.pl, przy pierwszym użyciu niektórych funkcji, takich jak rozpoznawanie tekstu (OCR) czy zdjęcia HEIC. W&nbsp;PizuAudio przy pierwszym oddzielaniu wokalu także modelu AI (ok. 172&nbsp;MB) z&nbsp;Hugging Face. To przeglądarka ściąga narzędzie, a&nbsp;nie wysyła Twoich plików.</li>
-            <li>W&nbsp;PizuPDF czasem małe żądanie POST do <code>ingest.de.sentry.io</code> — raport o&nbsp;błędzie albo czas wczytywania strony, bez pliku i&nbsp;jego nazwy. Kliknij je, żeby zobaczyć, co zawiera.</li>
-          </ul>
+      <!-- Domyślnie zwinięte: widać nagłówek i strzałkę. <details> działa bez JavaScriptu, Chrome sam je rozwija przy
+           szukaniu na stronie, a nagłówek zostaje nagłówkiem (poza <summary>). Zwiniętą kartę rozwija kliknięcie
+           w dowolnym miejscu (start.css), link „Sprawdź sam” i adres #sprawdz (start.js). -->
+      <details class="check-more" id="sprawdz-kroki">
+        <summary><span class="visually-hidden">Kroki: jak to sprawdzić</span><svg class="check-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5l7 4 7-4M5 12.5l7 4 7-4" /></svg></summary>
+        <div class="check-body">
+          <!-- Bez filtra po metodzie: lista od otwarcia panelu jest krótka, a filtr method:POST ukryłby PUT czy WebSocket.
+               role="list", bo Safari z VoiceOver nie traktuje listy z list-style: none jak listy (wyjątek w scripts/w3c.mjs). -->
+          <ol class="check-steps" role="list">
+            <li>Otwórz narzędzie, np. <a href="https://pdf.pizu.pl/zamaz-dane-w-pdf/" target="_blank" rel="noopener">zamazywanie danych w&nbsp;PDF</a> (w&nbsp;nowej karcie — ta instrukcja zostanie tutaj), i&nbsp;naciśnij <kbd>F12</kbd>. Na Macu: <kbd>Option&nbsp;<span aria-hidden="true">⌥</span></kbd>&nbsp;+ <kbd>Command&nbsp;<span aria-hidden="true">⌘</span></kbd>&nbsp;+&nbsp;<kbd>I</kbd>.</li>
+            <li>W&nbsp;panelu, który się otworzy, wybierz kartę <strong>Sieć</strong> (Network). Gdy panel jest wąski, bywa schowana pod przyciskiem <strong>»</strong>.</li>
+            <li>Wrzuć plik i&nbsp;go obrób. Na liście pojawi się każde połączenie, które strona nawiąże od tej chwili.</li>
+            <li>Przejrzyj listę: nie ma na niej nic, co wysyła Twój plik — najwyżej pobieranie części narzędzia, opisane w&nbsp;ramce.</li>
+          </ol>
+          <div class="check-notes">
+            <h3>Co możesz tam zobaczyć</h3>
+            <ul>
+              <li>Pobieranie (GET) części narzędzia z&nbsp;jego serwera, np. pdf.pizu.pl, przy pierwszym użyciu niektórych funkcji, takich jak rozpoznawanie tekstu (OCR) czy zdjęcia HEIC. W&nbsp;PizuAudio przy pierwszym oddzielaniu wokalu także modelu AI (ok. 172&nbsp;MB) z&nbsp;Hugging Face. To przeglądarka ściąga narzędzie, a&nbsp;nie wysyła Twoich plików.</li>
+              <li>W&nbsp;PizuPDF czasem małe żądanie POST do <code>ingest.de.sentry.io</code> — raport o&nbsp;błędzie albo czas wczytywania strony, bez pliku i&nbsp;jego nazwy. Kliknij je, żeby zobaczyć, co zawiera.</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </details>
     </section>
 
     <!-- Zwykły link do Suppi zamiast ich widżetu: widżet wczytywałby obrazek z suppi.pl przy każdej wizycie. -->

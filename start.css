@@ -487,11 +487,64 @@ main {
 /* ── sprawdź sam ───────────────────────────────────────── */
 
 .check {
+  position: relative;
   margin-bottom: 56px;
-  padding: 30px;
+  padding: 30px 30px 14px;
   border: 1px solid var(--line);
   border-radius: 20px;
   background: var(--surface);
+}
+
+/* Domyślnie zwinięta: pod nagłówkiem podwójna strzałka (<summary>). Zwiniętą kartę rozwija kliknięcie w dowolnym
+   miejscu — summary rozciąga się na całą kartę; po rozwinięciu zwija ją już tylko strzałka. */
+.check-more > summary {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+  color: var(--muted);
+  list-style: none;
+  cursor: pointer;
+}
+
+.check-more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.check-more:not([open]) > summary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+}
+
+.check-more > summary:hover,
+.check:has(.check-more:not([open])):hover .check-more > summary {
+  color: var(--brand-ink);
+}
+
+.check-chevron {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.18s;
+}
+
+.check-more[open] .check-chevron {
+  transform: rotate(180deg);
+}
+
+/* fokus z klawiatury: obwódka całej zwiniętej karty, jak przy kartach narzędzi; po rozwinięciu — samej strzałki */
+.check-more:not([open]) > summary:focus-visible {
+  outline: none;
+}
+
+.check:has(.check-more:not([open]) > summary:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
 }
 
 .check-head {
@@ -527,7 +580,7 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   gap: 24px 36px;
-  margin-top: 24px;
+  margin-block: 12px 16px;
 }
 
 .check-steps {
@@ -1094,6 +1147,10 @@ main {
   .check,
   .support {
     padding: 22px;
+  }
+
+  .check {
+    padding-bottom: 10px;
   }
 
   .check-icon {

@@ -98,6 +98,19 @@
   });
 })();
 
+// Sekcja „Sprawdź sam” jest domyślnie zwinięta (<details>); link „Sprawdź sam” i wejście z adresem #sprawdz ją rozwijają.
+(function () {
+  var steps = document.getElementById("sprawdz-kroki");
+  if (!steps) return;
+  if (location.hash === "#sprawdz") steps.open = true;
+  document.addEventListener("click", function (e) {
+    if (e.target.closest('a[href="#sprawdz"]')) steps.open = true;
+  });
+  window.addEventListener("hashchange", function () {
+    if (location.hash === "#sprawdz") steps.open = true;
+  });
+})();
+
 // Ptak wodzi okiem za kursorem, gdy animacje są włączone (system albo panel „Wygląd”).
 (function () {
   var eye = document.querySelector(".mascot .eye");
