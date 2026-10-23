@@ -547,8 +547,10 @@ main {
   counter-increment: krok;
 }
 
+/* numer w kółku tylko dla oka (po „/” pusty tekst dla czytników) — czytnik i tak podaje pozycję na liście */
 .check-steps li::before {
   content: counter(krok);
+  content: counter(krok) / "";
   position: absolute;
   top: 0;
   left: 0;
