@@ -30,7 +30,7 @@
   <script src="settings-init.js?v=d008af4809"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
   <link rel="stylesheet" href="pizu-shell.css?v=130de81fc6" />
-  <link rel="stylesheet" href="start.css?v=d1aaba8037" />
+  <link rel="stylesheet" href="start.css?v=5a53f20245" />
   <script src="pizu-shell.js?v=9f5e99d223" defer></script>
   <script src="start.js?v=8736ad5cbf" defer></script>
 </head>
@@ -106,54 +106,69 @@
         <p>Każde działa od razu w&nbsp;przeglądarce, bez zakładania konta.</p>
       </div>
 
+      <!-- Cała karta prowadzi do narzędzia (rozciągnięty link .tool-link), a tagi to osobne linki do podstron —
+           linków nie można zagnieżdżać, więc karta to <div>, nie <a>. -->
       <ul class="tool-list">
         <li>
-          <a class="tool tool-audio" href="https://audio.pizu.pl/">
+          <div class="tool tool-audio">
             <span class="tool-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M3 12h1M7 8v8M11 4v16M15 7v10M19 10v4M22 12h-1" /></svg>
             </span>
-            <span class="tool-name">Pizu<span class="tool-name-product">Audio</span></span>
+            <a class="tool-name tool-link" href="https://audio.pizu.pl/">Pizu<span class="tool-name-product">Audio</span></a>
             <span class="tool-desc">Oddziel wokal od muzyki, zrób podkład do karaoke, wytnij fragment i&nbsp;zapisz go jako MP3.</span>
             <span class="tool-tags">
-              <span>Wokal i&nbsp;podkład</span><span>Tempo i&nbsp;tonacja</span><span>Przycinanie</span><span>MP3 · WAV</span>
+              <a href="https://audio.pizu.pl/oddziel-wokal/">Wokal i&nbsp;podkład</a>
+              <a href="https://audio.pizu.pl/oddziel-wokal/">Tempo i&nbsp;tonacja</a>
+              <a href="https://audio.pizu.pl/przytnij-mp3/">Przycinanie MP3</a>
+              <a href="https://audio.pizu.pl/przytnij-mp3/">MP3 · WAV</a>
+              <a class="tool-demo" href="https://audio.pizu.pl/oddziel-wokal/?demo">Posłuchaj demo ▶</a>
             </span>
-            <span class="tool-foot">
-              <span class="tool-go">Otwórz narzędzia audio <span aria-hidden="true">→</span></span>
+            <span class="tool-foot" aria-hidden="true">
+              <span class="tool-go">Otwórz narzędzia audio <span>→</span></span>
               <span class="tool-url">audio.pizu.pl</span>
             </span>
-          </a>
+          </div>
         </li>
         <li>
-          <a class="tool tool-grafika" href="https://grafika.pizu.pl/">
+          <div class="tool tool-grafika">
             <span class="tool-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5" /><path d="M3 17l5-5 4 4 3-3 6 6" /><circle cx="16" cy="9" r="1.6" /></svg>
             </span>
-            <span class="tool-name">Pizu<span class="tool-name-product">Grafika</span></span>
+            <a class="tool-name tool-link" href="https://grafika.pizu.pl/">Pizu<span class="tool-name-product">Grafika</span></a>
             <span class="tool-desc">Konwertuj zdjęcia (także HEIC z&nbsp;iPhone’a), zmniejszaj, kadruj, zasłaniaj prywatne fragmenty, dodawaj znak wodny i&nbsp;twórz kody QR — także do przelewu.</span>
             <span class="tool-tags">
-              <span>JPG · PNG · WebP · HEIC</span><span>Kompresja</span><span>Kadrowanie</span><span>Kody QR</span>
+              <a href="https://grafika.pizu.pl/konwertuj-zdjecia/">JPG · PNG · WebP · HEIC</a>
+              <a href="https://grafika.pizu.pl/konwertuj-zdjecia/">Kompresja</a>
+              <a href="https://grafika.pizu.pl/kadruj-zdjecie/">Kadrowanie</a>
+              <a href="https://grafika.pizu.pl/zaslon-i-znak-wodny/">Zasłanianie</a>
+              <a href="https://grafika.pizu.pl/kod-qr/">Kody QR</a>
             </span>
-            <span class="tool-foot">
-              <span class="tool-go">Otwórz narzędzia do zdjęć i grafiki <span aria-hidden="true">→</span></span>
+            <span class="tool-foot" aria-hidden="true">
+              <span class="tool-go">Otwórz narzędzia do zdjęć i grafiki <span>→</span></span>
               <span class="tool-url">grafika.pizu.pl</span>
             </span>
-          </a>
+          </div>
         </li>
         <li>
-          <a class="tool tool-pdf" href="https://pdf.pizu.pl/">
+          <div class="tool tool-pdf">
             <span class="tool-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M6 2.8h8.2L19 7.6v13.6H6z" /><path d="M14 2.8v5h5" /><path d="M9 13h7M9 16.5h7M9 9.5h3" /></svg>
             </span>
-            <span class="tool-name">Pizu<span class="tool-name-product">PDF</span></span>
+            <a class="tool-name tool-link" href="https://pdf.pizu.pl/">Pizu<span class="tool-name-product">PDF</span></a>
             <span class="tool-desc">Scalaj, dziel, kompresuj, podpisuj i&nbsp;konwertuj pliki PDF — także do Worda, z&nbsp;rozpoznawaniem tekstu. Trwale zamazuj w&nbsp;nich nazwiska, PESEL czy kwoty.</span>
             <span class="tool-tags">
-              <span>Scal i&nbsp;podziel</span><span>Kompresja</span><span>PDF ↔ Word</span><span>Zamazywanie danych</span>
+              <a href="https://pdf.pizu.pl/scal-pdf/">Scal PDF</a>
+              <a href="https://pdf.pizu.pl/podziel-pdf/">Podziel</a>
+              <a href="https://pdf.pizu.pl/kompresuj-pdf/">Kompresja</a>
+              <a href="https://pdf.pizu.pl/pdf-na-word/">PDF ↔ Word</a>
+              <a href="https://pdf.pizu.pl/ocr-pdf/">OCR</a>
+              <a href="https://pdf.pizu.pl/zamaz-dane-w-pdf/">Zamazywanie danych</a>
             </span>
-            <span class="tool-foot">
-              <span class="tool-go">Otwórz narzędzia PDF <span aria-hidden="true">→</span></span>
+            <span class="tool-foot" aria-hidden="true">
+              <span class="tool-go">Otwórz narzędzia PDF <span>→</span></span>
               <span class="tool-url">pdf.pizu.pl</span>
             </span>
-          </a>
+          </div>
         </li>
       </ul>
     </section>
@@ -164,7 +179,7 @@
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" /></svg>
           <h3>Pliki zostają u&nbsp;Ciebie</h3>
-          <p>Twoje pliki są przetwarzane lokalnie w&nbsp;przeglądarce, bez przesyłania ich na serwer. <button class="link-button" type="button" data-about="privacy" aria-haspopup="dialog">Jak to działa</button></p>
+          <p>Faktury, umowy, skany dowodu czy zdjęcia z&nbsp;telefonu obrabia Twoja przeglądarka — nie trafiają na żaden serwer. <button class="link-button" type="button" data-about="privacy" aria-haspopup="dialog">Jak to działa</button></p>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2.5" /><path d="M3 9h18M6.5 6.8h.01M9 6.8h.01" /></svg>
@@ -184,7 +199,7 @@
       <svg class="support-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2v2M14 2v2M6 2v2" /><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" /></svg>
       <div class="support-text">
         <h2 id="wsparcie-tytul">Wesprzyj Pizu</h2>
-        <p>Narzędzia Pizu są darmowe i&nbsp;bez reklam. Jeśli Ci pomogły, możesz postawić kawę — wsparcie pomaga opłacić serwer i&nbsp;rozwijać kolejne narzędzia.</p>
+        <p>Narzędzia Pizu są darmowe i&nbsp;bez reklam. Jeśli Ci pomogły, możesz postawić kawę — wsparcie pomaga opłacić hosting strony i&nbsp;rozwijać kolejne narzędzia.</p>
       </div>
       <a class="button support-button" href="https://suppi.pl/pizu" target="_blank" rel="noopener">Postaw kawę na Suppi<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>
     </section>

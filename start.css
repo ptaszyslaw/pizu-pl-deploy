@@ -288,6 +288,7 @@ main {
 .tool {
   --tool: var(--brand-ink);
   --tile: var(--chip);
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -311,8 +312,25 @@ main {
   box-shadow: var(--shadow-hover);
 }
 
-.tool:focus-visible {
+/* Rozciągnięty link: klik w dowolne miejsce karty otwiera narzędzie, obwódka fokusu obejmuje całą kartę. */
+.tool-link {
+  text-decoration: none;
+}
+
+.tool-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   border-radius: 20px;
+}
+
+.tool-link:focus-visible {
+  outline: none;
+}
+
+.tool:has(.tool-link:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
 }
 
 .tool-icon {
@@ -358,13 +376,28 @@ main {
   margin-top: 2px;
 }
 
-.tool-tags span {
+/* Tagi prowadzą do podstron narzędzi — leżą nad rozciągniętym linkiem karty. */
+.tool-tags a {
+  position: relative;
+  z-index: 1;
   padding: 3px 10px;
   border-radius: 999px;
   background: var(--chip);
   color: var(--ink);
   font-size: 0.8rem;
   font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+}
+
+.tool-tags a:hover,
+.tool-tags .tool-demo {
+  background: var(--tile);
+  color: var(--tool);
+}
+
+.tool-tags .tool-demo:hover {
+  text-decoration: underline;
 }
 
 /* Zakończenie karty: co się stanie po kliknięciu, a pod spodem adres mniejszym tekstem. */
