@@ -30,7 +30,7 @@
   <script src="settings-init.js?v=d008af4809"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
   <link rel="stylesheet" href="pizu-shell.css?v=130de81fc6">
-  <link rel="stylesheet" href="start.css?v=5a53f20245">
+  <link rel="stylesheet" href="start.css?v=4e4e241ce8">
   <script src="pizu-shell.js?v=9f5e99d223" defer></script>
   <script src="start.js?v=8736ad5cbf" defer></script>
 </head>
@@ -179,7 +179,7 @@
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" /></svg>
           <h3>Pliki zostają u&nbsp;Ciebie</h3>
-          <p>Faktury, umowy, skany dowodu czy zdjęcia z&nbsp;telefonu obrabia Twoja przeglądarka — nie trafiają na żaden serwer. <button class="link-button" type="button" data-about="privacy" aria-haspopup="dialog">Jak to działa</button></p>
+          <p>Faktury, umowy, skany dowodu czy zdjęcia z&nbsp;telefonu obrabia Twoja przeglądarka — nie trafiają na żaden serwer. <button class="link-button" type="button" data-about="privacy" aria-haspopup="dialog">Jak to działa</button> · <a href="#sprawdz">Sprawdź sam</a></p>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2.5" /><path d="M3 9h18M6.5 6.8h.01M9 6.8h.01" /></svg>
@@ -192,6 +192,34 @@
           <p>Żadnej rejestracji ani logowania. Wchodzisz, robisz swoje, wychodzisz.</p>
         </li>
       </ul>
+    </section>
+
+    <!-- Test prywatności dla każdego: karta Sieć w narzędziach przeglądarki (sprawdzone 23.10 na zamazywaniu z OCR).
+         Wyjątki muszą się zgadzać z zakładką „Prywatność” w oknie „O Pizu”: model AI z Hugging Face w PizuAudio
+         i raporty Sentry w PizuPDF. Gdy narzędzie zacznie łączyć się z czymś nowym, popraw też tę sekcję. -->
+    <section id="sprawdz" class="check" aria-labelledby="sprawdz-tytul">
+      <div class="check-head">
+        <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.4 15.4L20.5 20.5" /></svg>
+        <div>
+          <h2 id="sprawdz-tytul">Sprawdź sam, że pliki nie wychodzą</h2>
+          <p>Nie musisz wierzyć nam na słowo. Na komputerze, w&nbsp;Chrome, Edge albo Firefoksie, zajmie to minutę.</p>
+        </div>
+      </div>
+      <div class="check-body">
+        <ol class="check-steps">
+          <li>Otwórz narzędzie, np. <a href="https://pdf.pizu.pl/zamaz-dane-w-pdf/">zamazywanie danych w&nbsp;PDF</a>, i&nbsp;naciśnij <kbd>F12</kbd> (na Macu <kbd>⌥</kbd>&nbsp;<kbd>⌘</kbd>&nbsp;<kbd>I</kbd>).</li>
+          <li>W&nbsp;panelu, który się otworzy, wybierz kartę <strong>Sieć</strong> (Network).</li>
+          <li>W&nbsp;polu filtru wpisz <code>method:POST</code> — zostaną tylko żądania, które coś wysyłają.</li>
+          <li>Wrzuć plik i&nbsp;go obrób. Na liście nie pojawi się nic, co wysyła Twój plik.</li>
+        </ol>
+        <div class="check-notes">
+          <h3>Co jeszcze możesz tam zobaczyć</h3>
+          <ul>
+            <li>Bez filtra — pobieranie (GET) plików samego narzędzia z&nbsp;serwera Pizu, a&nbsp;w&nbsp;PizuAudio przy pierwszym oddzielaniu wokalu także modelu AI (ok. 172&nbsp;MB) z&nbsp;Hugging Face. To przeglądarka ściąga narzędzie, a&nbsp;nie wysyła Twoich plików.</li>
+            <li>W&nbsp;PizuPDF czasem małe żądanie POST do <code>ingest.de.sentry.io</code> — raport o&nbsp;błędzie albo czas wczytywania strony, bez pliku i&nbsp;jego nazwy. Kliknij je, żeby zobaczyć, co zawiera.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Zwykły link do Suppi zamiast ich widżetu: widżet wczytywałby obrazek z suppi.pl przy każdej wizycie. -->

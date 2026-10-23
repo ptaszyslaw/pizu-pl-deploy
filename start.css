@@ -484,6 +484,130 @@ main {
   cursor: pointer;
 }
 
+/* ── sprawdź sam ───────────────────────────────────────── */
+
+.check {
+  margin-bottom: 56px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.check-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.check-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: var(--brand-ink);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.check-head h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.check-head p {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+/* kroki po lewej, wyjątki po prawej (na telefonie jedno pod drugim) */
+.check-body {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 24px 36px;
+  margin-top: 24px;
+}
+
+.check-steps {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: krok;
+}
+
+.check-steps li {
+  position: relative;
+  min-height: 30px;
+  padding: 3px 0 0 44px;
+  counter-increment: krok;
+}
+
+.check-steps li::before {
+  content: counter(krok);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--pdf-tile);
+  color: var(--brand-ink);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.check a {
+  color: var(--brand-ink);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.check kbd,
+.check code {
+  padding: 1px 6px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--chip);
+  color: var(--ink);
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+.check kbd {
+  border-bottom-width: 2px;
+}
+
+.check-notes {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.check-notes h3 {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.check-notes ul {
+  margin: 8px 0 0;
+  padding-left: 1.1em;
+}
+
+.check-notes li + li {
+  margin-top: 8px;
+}
+
 /* ── okno „O Pizu” ─────────────────────────────────────── */
 
 .tabs {
@@ -949,6 +1073,10 @@ main {
     grid-template-columns: 1fr;
     gap: 22px;
   }
+
+  .check-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
@@ -961,8 +1089,14 @@ main {
   }
 
   .why-list,
+  .check,
   .support {
     padding: 22px;
+  }
+
+  .check-icon {
+    width: 36px;
+    height: 36px;
   }
 }
 
