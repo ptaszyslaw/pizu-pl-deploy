@@ -61,6 +61,7 @@
         { slug: 'pdf-na-word', name: 'PDF do Word', desc: 'Także skany, z rozpoznawaniem tekstu' },
         { slug: 'pdf-na-txt', name: 'PDF na tekst', desc: 'Plik TXT albo kopia do schowka' },
         { slug: 'ocr-pdf', name: 'OCR PDF', desc: 'Przeszukiwalny PDF ze skanu' },
+        { slug: 'dostepny-skan-pisma', name: 'Dostępny skan pisma', desc: 'Skan z podpisem dla czytników ekranu' },
         { slug: 'word-na-pdf', name: 'Tekst z Worda do PDF', desc: 'Sam tekst z DOCX, bez układu' },
         { slug: 'pdf-na-obraz', name: 'PDF na obraz', desc: 'Strony jako PNG lub JPG' },
         { slug: 'obraz-na-pdf', name: 'Obraz na PDF', desc: 'Zdjęcia i skany w jednym PDF' },

@@ -231,11 +231,12 @@ pizu-footer :focus-visible {
   width: 36rem;
 }
 
-/* dwie kolumny czytane z góry na dół (PDF: 10 narzędzi → 5 wierszy), żeby pokrewne leżały obok siebie */
+/* trzy kolumny czytane z góry na dół (PDF: 16 narzędzi → 6 wierszy), żeby pokrewne leżały obok siebie;
+   przy nowym narzędziu sprawdź liczbę wierszy — nadmiarowa pozycja tworzy wąską czwartą kolumnę */
 .pz-panel-wide .pz-panel-list {
   grid-auto-flow: column;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(6, auto);
 }
 
 .pz-panel-head {
