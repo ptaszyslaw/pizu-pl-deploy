@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+  >
+  <title>Czy narzędzie online wysyła Twój plik? Jak to sprawdzić | Pizu</title>
+  <meta name="description" content="Wiele narzędzi online wysyła pliki na swój serwer. Zobacz, jak w kilka minut sprawdzić to samemu: testem bez internetu i w karcie Sieć przeglądarki.">
+  <link rel="canonical" href="https://pizu.pl/poradniki/czy-narzedzie-online-wysyla-plik/">
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121419" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Czy narzędzie online wysyła Twój plik? Jak to sprawdzić | Pizu">
+  <meta property="og:description" content="Wiele narzędzi online wysyła pliki na swój serwer. Zobacz, jak w kilka minut sprawdzić to samemu: testem bez internetu i w karcie Sieć przeglądarki.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://pizu.pl/poradniki/czy-narzedzie-online-wysyla-plik/">
+  <meta property="og:site_name" content="Pizu">
+  <meta property="og:locale" content="pl_PL">
+  <!-- grafika: scripts/og-image.html → node scripts/og-image.mjs -->
+  <meta property="og:image" content="https://pizu.pl/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ptak Pizu i napis: Pizu — narzędzia, które nie wysyłają Twoich plików. Dźwięk, zdjęcia, PDF.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
+  <script src="/settings-init.js?v=d008af4809"></script>
+  <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
+  <link rel="stylesheet" href="/pizu-shell.css?v=c054189e08">
+  <link rel="stylesheet" href="/start.css?v=85e045e8c1">
+  <script src="/pizu-shell.js?v=98fed515b8" defer></script>
+  <script src="/start.js?v=29571391bf" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Czy narzędzie online wysyła Twój plik? Jak to sprawdzić","description":"Wiele narzędzi online wysyła pliki na swój serwer. Zobacz, jak w kilka minut sprawdzić to samemu: testem bez internetu i w karcie Sieć przeglądarki.","datePublished":"2026-10-29","dateModified":"2026-10-29","inLanguage":"pl","url":"https://pizu.pl/poradniki/czy-narzedzie-online-wysyla-plik/","mainEntityOfPage":"https://pizu.pl/poradniki/czy-narzedzie-online-wysyla-plik/","image":"https://pizu.pl/og-image.png","author":{"@type":"Organization","name":"Pizu","url":"https://pizu.pl/"},"publisher":{"@type":"Organization","name":"Pizu","url":"https://pizu.pl/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pizu","item":"https://pizu.pl/"},{"@type":"ListItem","position":2,"name":"Poradniki","item":"https://pizu.pl/poradniki/"},{"@type":"ListItem","position":3,"name":"Czy narzędzie online wysyła Twój plik? Jak to sprawdzić","item":"https://pizu.pl/poradniki/czy-narzedzie-online-wysyla-plik/"}]}]}</script>
+</head>
+<body>
+  <a class="skip" href="#tresc">Przejdź do treści</a>
+
+  <pizu-header settings>
+    <!-- bez JavaScriptu zostają zwykłe linki; skrypt zamienia je na pełną belkę z menu -->
+    <nav class="pz-bar" aria-label="Narzędzia Pizu">
+      <a class="pz-logo" href="https://pizu.pl/"><span class="pz-logo-name">Pizu</span></a>
+      <a href="https://audio.pizu.pl/">PizuAudio</a>
+      <a href="https://grafika.pizu.pl/">PizuGrafika</a>
+      <a href="https://pdf.pizu.pl/">PizuPDF</a>
+    </nav>
+  </pizu-header>
+
+  <main id="tresc">
+    <nav class="crumbs" aria-label="Jesteś tutaj">
+      <ol><li><a href="/">Pizu</a></li><li><a href="/poradniki/">Poradniki</a></li></ol>
+    </nav>
+    <article class="guide">
+      <header class="guide-head">
+        <p class="eyebrow">Poradnik</p>
+        <h1>Czy narzędzie online wysyła Twój plik? Jak to sprawdzić</h1>
+        <p class="guide-date">Opublikowano <time datetime="2026-10-29">29 października 2026</time></p>
+      </header>
+      <div class="guide-body">
+<p>Trzeba zmniejszyć PDF ze skanem dowodu, zamienić zdjęcie umowy na JPG albo połączyć kilka faktur. Wpisujesz w&nbsp;wyszukiwarkę „kompresuj PDF online”, wrzucasz plik i&nbsp;po chwili pobierasz wynik. Tylko gdzie ten plik był w&nbsp;międzyczasie?</p>
+<p>Wiele narzędzi online działa tak, że plik trafia na ich serwer, tam jest przetwarzany, a&nbsp;Ty pobierasz wynik. Inne robią wszystko w&nbsp;Twojej przeglądarce i&nbsp;plik nigdzie nie wychodzi. Na stronie obie wersje wyglądają tak samo, a&nbsp;hasło „bezpiecznie” czy „prywatnie” łatwo napisać. Na szczęście można to sprawdzić samemu, bez wiedzy technicznej.</p>
+<p>To ma znaczenie zwłaszcza w&nbsp;pracy. Wysyłając dokument z&nbsp;danymi innych osób&nbsp;— klientów, uczniów, pacjentów&nbsp;— do zewnętrznego serwisu, przekazujesz te dane kolejnej firmie. W&nbsp;pracy korzystaj z&nbsp;narzędzi zatwierdzonych przez Twoją organizację, a&nbsp;przed wysłaniem danych innych osób zapytaj osobę odpowiedzialną za ochronę danych. Może być potrzebna m.in. umowa powierzenia przetwarzania danych (RODO), której zgoda przełożonego nie zastępuje.</p>
+<nav class="guide-toc" aria-label="Spis treści">
+<p class="guide-toc-title">W tym poradniku</p>
+<ol>
+  <li><a href="#dwa-rodzaje-narzedzi-online">Dwa rodzaje narzędzi online</a></li>
+  <li><a href="#test-1-bez-internetu">Test 1: bez internetu</a></li>
+  <li><a href="#test-2-karta-siec-w-przegladarce">Test 2: karta Sieć w&nbsp;przeglądarce</a></li>
+  <li><a href="#co-zobaczysz-na-liscie">Co zobaczysz na liście</a></li>
+  <li><a href="#na-telefonie">Na telefonie</a></li>
+  <li><a href="#na-co-patrzec-w-opisie-uslugi">Na co patrzeć w&nbsp;opisie usługi</a></li>
+  <li><a href="#a-jak-to-wyglada-w-pizu">A&nbsp;jak to wygląda w&nbsp;Pizu?</a></li>
+</ol>
+</nav>
+<h2 id="dwa-rodzaje-narzedzi-online">Dwa rodzaje narzędzi online</h2>
+<ul>
+  <li><strong>Narzędzie z&nbsp;serwerem:</strong> przeglądarka wysyła plik, serwer go przetwarza i&nbsp;odsyła wynik. Zwykle widać pasek „Wysyłanie…”, a&nbsp;bez internetu nic nie zadziała.</li>
+  <li><strong>Narzędzie w&nbsp;przeglądarce:</strong> strona pobiera samo narzędzie (skrypty, czasem większe moduły), a&nbsp;plik obrabia Twój komputer albo telefon. Po wczytaniu strony często działa nawet bez internetu.</li>
+</ul>
+<p>Z&nbsp;wyglądu strony tego nie odróżnisz. Pomogą dwa proste testy. Do obu użyj pliku testowego bez danych osobowych i&nbsp;poufnych, np. zdjęcia ściany albo przykładowego dokumentu&nbsp;— nie prawdziwego.</p>
+<h2 id="test-1-bez-internetu">Test 1: bez internetu</h2>
+<p>Najprostszy sprawdzian, także na telefonie:</p>
+<ol>
+  <li>Otwórz narzędzie i&nbsp;poczekaj, aż strona się wczyta.</li>
+  <li>Odłącz wszystkie połączenia z&nbsp;internetem. Na telefonie włącz tryb samolotowy i&nbsp;sprawdź, czy Wi-Fi i&nbsp;dane komórkowe są wyłączone. Na komputerze wyłącz Wi-Fi i&nbsp;odłącz kabel sieciowy, jeśli go używasz.</li>
+  <li>Wrzuć plik testowy i&nbsp;spróbuj go obrobić.</li>
+  <li>Zanim z&nbsp;powrotem włączysz internet, zamknij kartę z&nbsp;narzędziem.</li>
+</ol>
+<p>Jeśli wszystko działa i&nbsp;dostajesz wynik, plik został przetworzony na Twoim urządzeniu. Jeśli pojawia się błąd połączenia, ta funkcja potrzebuje internetu&nbsp;— ale nie wiadomo po co: może wysyła plik, a&nbsp;może dopiero pobiera część narzędzia.</p>
+<div class="note"><p><strong>Uwaga:</strong> niektóre narzędzia w&nbsp;przeglądarce pobierają część modułów dopiero przy pierwszym użyciu funkcji (np. rozpoznawanie tekstu), więc za pierwszym razem mogą potrzebować internetu. Strona mogłaby też zachować plik i&nbsp;wysłać go, gdy połączenie wróci. Dokładniej przyjrzysz się temu w&nbsp;teście 2.</p></div>
+<h2 id="test-2-karta-siec-w-przegladarce">Test 2: karta Sieć w&nbsp;przeglądarce</h2>
+<p>Na komputerze, w&nbsp;Chrome, Edge albo Firefoksie, przeglądarka pokazuje połączenia, które nawiązuje strona. Zajmie to kilka minut:</p>
+<ol>
+  <li>Otwórz narzędzie, ale nie wrzucaj jeszcze pliku.</li>
+  <li>Naciśnij F12 (albo Ctrl+Shift+I; na Macu Option ⌥ + Command ⌘ + I) i&nbsp;w&nbsp;panelu, który się otworzy, wybierz kartę <strong>Sieć</strong> (Network). Gdy panel jest wąski, karta bywa schowana pod przyciskiem „»”.</li>
+  <li>W&nbsp;Chrome i&nbsp;Edge zaznacz <strong>Zachowaj dziennik</strong> (Preserve log), a&nbsp;w&nbsp;Firefoksie w&nbsp;ustawieniach karty Sieć (ikona koła zębatego) włącz zachowywanie dzienników (Persist Logs). Lista nie zniknie, gdy strona przejdzie na stronę z&nbsp;wynikiem.</li>
+  <li>Odśwież stronę klawiszem F5, nie zamykając panelu. Teraz lista obejmuje wszystkie połączenia od początku, także te otwarte przy wczytaniu strony.</li>
+  <li>Wrzuć plik testowy i&nbsp;obrób go. Nowe pozycje pojawią się na końcu listy.</li>
+  <li>Przejrzyj nowe pozycje. Szukaj żądań z&nbsp;metodą <strong>POST</strong>, <strong>PUT</strong> albo <strong>PATCH</strong> i&nbsp;połączeń typu <strong>websocket</strong> (kolumna „Typ”). W&nbsp;Firefoksie metodę widać w&nbsp;kolumnie „Metoda”; w&nbsp;Chrome i&nbsp;Edge kliknij prawym przyciskiem nagłówek tabeli i&nbsp;włącz kolumnę „Metoda”. Zerknij też na adresy żądań GET&nbsp;— w&nbsp;adresie da się przesłać np. tekst odczytany z&nbsp;dokumentu.</li>
+  <li>Kliknij podejrzaną pozycję i&nbsp;zobacz, co wysłała. Przy POST, PUT i&nbsp;PATCH zajrzyj na kartę <strong>Ładunek</strong> (Payload) w&nbsp;Chrome i&nbsp;Edge albo <strong>Żądanie</strong> w&nbsp;Firefoksie. Przy połączeniu websocket wysłane dane zobaczysz na karcie z&nbsp;wiadomościami (Messages) w&nbsp;Chrome i&nbsp;Edge, a&nbsp;w&nbsp;Firefoksie na karcie <strong>Odpowiedź</strong>.</li>
+</ol>
+<p>Jak to ocenić: rozpoznawalna zawartość pliku testowego (np. tekst z&nbsp;niego) w&nbsp;wysłanych danych oznacza, że trafiła na serwer. Sama nazwa pliku to tylko nazwa. Gdy widać tylko nieczytelne dane albo karty z&nbsp;treścią nie ma, sprawdź na karcie <strong>Nagłówki</strong> wartość <code>content-length</code>: liczba bajtów zbliżona do rozmiaru pliku oznacza, że wysłano mniej więcej tyle danych, ile ma plik.</p>
+<div class="note"><p><strong>Czego test nie pokaże:</strong> karta Sieć pokazuje, co strona wysłała w&nbsp;czasie Twojej próby. Nie daje gwarancji, że nigdy nic nie wyśle&nbsp;— strona, która chce to ukryć, może wysłać dane później, w&nbsp;tle albo kanałem, którego karta Sieć nie pokazuje (np. WebRTC), a&nbsp;własne połączenia mają też rozszerzenia przeglądarki. Żeby zobaczyć, jak działa zwykłe narzędzie, ten test wystarcza.</p></div>
+<h2 id="co-zobaczysz-na-liscie">Co zobaczysz na liście</h2>
+<ul>
+  <li><strong>Pobieranie (GET) plików narzędzia</strong>&nbsp;— skryptów, czcionek, modułów WebAssembly&nbsp;— przy otwarciu strony i&nbsp;przy pierwszym użyciu niektórych funkcji. To przeglądarka ściąga narzędzie, a&nbsp;nie wysyła Twojego pliku.</li>
+  <li><strong>Pozycje zaczynające się od <code>blob:</code> albo <code>data:</code></strong>&nbsp;— pojawiają się, gdy przeglądarka robi podgląd albo przygotowuje gotowy plik do zapisania. To pamięć Twojego urządzenia, a&nbsp;nie połączenie z&nbsp;serwerem.</li>
+  <li><strong>Połączenia do usług statystyk</strong>, np. google-analytics.com czy googletagmanager.com, często też jako POST. Zwykle niosą tylko informację o&nbsp;wizycie albo kliknięciu, ale sama domena tego nie gwarantuje&nbsp;— jeśli masz wątpliwości, sprawdź, co wysłały.</li>
+  <li><strong>POST albo PUT do serwera narzędzia (albo chmury) w&nbsp;chwili obróbki</strong>, z&nbsp;zawartością pliku w&nbsp;treści żądania&nbsp;— to właśnie wysyłanie pliku. Kolumna „Rozmiar” pokazuje rozmiar odpowiedzi serwera, a&nbsp;nie wysłanych danych, więc przy dużym pliku może tam stać tylko kilkaset bajtów.</li>
+</ul>
+<h2 id="na-telefonie">Na telefonie</h2>
+<p>Na telefonie najprościej zrobić test bez internetu. Kartę Sieć też da się otworzyć, ale przez komputer i&nbsp;kabel: telefon z&nbsp;Androidem sprawdzisz w&nbsp;Chrome na komputerze (<a href="https://developer.chrome.com/docs/devtools/remote-debugging/">instrukcja Google</a>), a&nbsp;iPhone'a w&nbsp;Safari na Macu (<a href="https://webkit.org/web-inspector/enabling-web-inspector/">instrukcja WebKit</a>). W&nbsp;telefonie trzeba wcześniej włączyć odpowiednio debugowanie USB w&nbsp;opcjach programisty albo Inspektor www w&nbsp;ustawieniach Safari.</p>
+<h2 id="na-co-patrzec-w-opisie-uslugi">Na co patrzeć w&nbsp;opisie usługi</h2>
+<p>Nawet bez testów wiele powie opis usługi albo jej polityka prywatności:</p>
+<ul>
+  <li><strong>„Pliki usuwamy z&nbsp;serwera po godzinie”</strong>&nbsp;— skoro je usuwają, to najpierw je dostali.</li>
+  <li><strong>„Szyfrowane połączenie (SSL, HTTPS)”</strong>&nbsp;— chroni plik w&nbsp;drodze, ale nie mówi, że plik zostaje u&nbsp;Ciebie.</li>
+  <li><strong>„Przetwarzanie w&nbsp;chmurze”</strong>&nbsp;— wskazuje na zewnętrzne serwery. Sam limit rozmiaru pliku czy kolejka niczego nie rozstrzygają: bywają też przy obróbce na Twoim urządzeniu.</li>
+  <li><strong>„Pliki nie opuszczają Twojego urządzenia”</strong>&nbsp;— dobra deklaracja, którą możesz sprawdzić testami z&nbsp;tego poradnika.</li>
+</ul>
+<h2 id="a-jak-to-wyglada-w-pizu">A&nbsp;jak to wygląda w&nbsp;Pizu?</h2>
+<p>Narzędzia Pizu obrabiają pliki w&nbsp;Twojej przeglądarce. W&nbsp;karcie Sieć zobaczysz najwyżej:</p>
+<ul>
+  <li>pobieranie (GET) części narzędzia z&nbsp;jego serwera, np. pdf.pizu.pl, także przy pierwszym użyciu niektórych funkcji, takich jak rozpoznawanie tekstu (OCR) czy zdjęcia HEIC,</li>
+  <li>w&nbsp;PizuAudio, przy pierwszym oddzielaniu wokalu, pobieranie modelu AI (ok. 172 MB) z&nbsp;serwisu Hugging Face,</li>
+  <li>w&nbsp;PizuPDF&nbsp;— tylko gdy narzędzie trafi na błąd&nbsp;— małe żądanie POST do ingest.de.sentry.io z&nbsp;technicznym raportem, bez pliku, jego nazwy i&nbsp;adresu IP.</li>
+</ul>
+<p>PizuPDF i&nbsp;PizuGrafika już przy pierwszej wizycie zapisują swoje pliki w&nbsp;przeglądarce, także bez instalowania aplikacji. Potem działają bez internetu: PizuGrafika w&nbsp;całości, a&nbsp;PizuPDF poza rozpoznawaniem tekstu (OCR), które przy pierwszym użyciu musi pobrać swój moduł. Oba możesz też zainstalować jak aplikację. PizuAudio nie ma trybu pracy bez internetu, ale nagrania też obrabia na Twoim urządzeniu. Instrukcję krok po kroku masz też na stronie głównej, w&nbsp;sekcji <a href="https://pizu.pl/#sprawdz">Sprawdź sam</a>.</p>
+      </div>
+      <aside class="guide-tool" aria-label="Narzędzie z poradnika">
+        <p class="guide-tool-label">Narzędzie z poradnika</p>
+        <p><a class="button" href="https://pizu.pl/">Narzędzia Pizu <span aria-hidden="true">→</span></a></p>
+        <p>Działa w przeglądarce, bez konta i&nbsp;opłat. Pliki nie opuszczają Twojego urządzenia.</p>
+      </aside>
+    </article>
+    <section class="guide-more" aria-labelledby="inne-poradniki">
+      <h2 id="inne-poradniki">Inne poradniki</h2>
+<ul class="guide-list" role="list">
+  <li>
+    <h3><a href="/poradniki/dostepny-skan-pisma-z-podpisem/">Dostępny skan pisma z&nbsp;podpisem&nbsp;— jak pogodzić podpis z&nbsp;WCAG</a></h3>
+    <p>Skan podpisanego pisma to dla czytnika ekranu tylko obraz. Jak połączyć go z&nbsp;oryginałem z&nbsp;Worda, żeby pismo z&nbsp;podpisem przeczytała też osoba niewidoma.</p>
+    <p class="guide-date"><time datetime="2026-10-29">29 października 2026</time></p>
+  </li>
+  <li>
+    <h3><a href="/poradniki/faktura-z-ksef-w-pdf/">Faktura z&nbsp;KSeF w&nbsp;PDF&nbsp;— jak otworzyć i&nbsp;wydrukować plik XML</a></h3>
+    <p>E-faktura z&nbsp;KSeF to plik XML, który trudno przeczytać. Zobacz, jak w&nbsp;przeglądarce zamienić go na czytelny PDF z&nbsp;kodem QR&nbsp;— bez wysyłania pliku.</p>
+    <p class="guide-date"><time datetime="2026-10-29">29 października 2026</time></p>
+  </li>
+</ul>
+    </section>
+  </main>
+
+  <pizu-footer>
+    <p class="pz-foot">© 2026 Pizu · <a href="https://audio.pizu.pl/">PizuAudio</a> · <a href="https://grafika.pizu.pl/">PizuGrafika</a> · <a href="https://pdf.pizu.pl/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
+  </pizu-footer>
+
+  <!-- Okno „O Pizu” — jak „O aplikacji” w narzędziach. Prywatność streszcza zakładki „Prywatność” narzędzi:
+       przy zmianach w narzędziach (co pobierają, co zapisują w przeglądarce) zaktualizuj też tutaj. -->
+  <dialog class="about" aria-labelledby="about-title">
+    <div class="settings-body">
+      <div class="settings-head">
+        <h2 id="about-title">O Pizu</h2>
+        <button class="icon-button" type="button" data-dialog-close aria-label="Zamknij">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Informacje o Pizu">
+        <button type="button" role="tab" id="tab-privacy" aria-controls="panel-privacy" aria-selected="true" data-tab="privacy">Prywatność</button>
+        <button type="button" role="tab" id="tab-licenses" aria-controls="panel-licenses" aria-selected="false" tabindex="-1" data-tab="licenses">Licencje</button>
+        <button type="button" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1" data-tab="contact">Kontakt</button>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-privacy" aria-labelledby="tab-privacy" tabindex="0">
+        <p class="about-lead">Twoje pliki są przetwarzane lokalnie w&nbsp;przeglądarce, bez przesyłania ich na serwer. Szczegóły:</p>
+        <dl class="privacy-list">
+          <div>
+            <dt>Twoje pliki</dt>
+            <dd>PizuAudio, PizuGrafika i&nbsp;PizuPDF obrabiają pliki w&nbsp;Twojej przeglądarce, na Twoim urządzeniu. Ani pliki, ani wyniki nie są przesyłane na nasz serwer ani do innych firm.</dd>
+          </div>
+          <div>
+            <dt>Co pobiera przeglądarka</dt>
+            <dd>Przy otwarciu narzędzia — jego stronę z&nbsp;serwera Pizu, a&nbsp;przy niektórych funkcjach dodatkowe moduły z&nbsp;tego samego serwera (np. obsługę zdjęć HEIC i&nbsp;rozpoznawanie tekstu w&nbsp;PDF). Wyjątek: model AI do oddzielania wokalu w&nbsp;PizuAudio (ok. 172&nbsp;MB) przy pierwszym użyciu pobierany jest z&nbsp;serwisu Hugging Face, który widzi wtedy Twój adres IP — ale nie Twoje nagrania.</dd>
+          </div>
+          <div>
+            <dt>Czy potrzebny jest internet</dt>
+            <dd>Tak — do otwarcia narzędzia i&nbsp;pobrania potrzebnych modułów. Sama obróbka plików odbywa się już na Twoim urządzeniu.</dd>
+          </div>
+          <div>
+            <dt>Co zostaje w&nbsp;przeglądarce</dt>
+            <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
+          </div>
+          <div>
+            <dt>Bez śledzenia</dt>
+            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki. PizuPDF wysyła do usługi Sentry (dane w&nbsp;Unii Europejskiej) techniczny raport tylko wtedy, gdy w&nbsp;narzędziu wystąpi błąd — bez Twoich plików, ich nazw i&nbsp;adresu IP.</dd>
+          </div>
+          <div>
+            <dt>Wsparcie przez Suppi</dt>
+            <dd>Link „Wesprzyj Pizu” prowadzi do serwisu Suppi (Patronite). Strony Pizu łączą się z&nbsp;nim dopiero, gdy go klikniesz. Wpłatę obsługuje Suppi — strony Pizu nie mają dostępu do danych płatności.</dd>
+          </div>
+        </dl>
+        <p class="privacy-more">Szczegóły każdego narzędzia znajdziesz w&nbsp;jego oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Prywatność”.</p>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-licenses" aria-labelledby="tab-licenses" tabindex="0" hidden>
+        <p>Strona pizu.pl to własny kod (HTML, CSS i&nbsp;JavaScript) — bez bibliotek, czcionek ani skryptów z&nbsp;innych serwerów. Każde narzędzie ma własną listę licencji w&nbsp;oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Licencje”.</p>
+        <details class="license">
+          <summary>Ikona kubka (sekcja „Wesprzyj Pizu”) — Lucide, licencja ISC</summary>
+          <p>Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.</p>
+          <p>Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.</p>
+          <p>THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</p>
+        </details>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-contact" aria-labelledby="tab-contact" tabindex="0" hidden>
+        <p>Pytania, uwagi i&nbsp;zgłoszenia błędów: <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a>. Przy błędzie podaj nazwę narzędzia i&nbsp;numer wersji — jest w&nbsp;stopce każdego narzędzia.</p>
+        <p>Narzędzia Pizu są darmowe i&nbsp;bez reklam. Jeśli Ci pomogły, możesz <a href="https://suppi.pl/pizu" target="_blank" rel="noopener">postawić kawę na Suppi<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Panel „Wygląd i dostępność” — te same opcje i opisy co w narzędziach Pizu.
+       Zmiany działają od razu i są zapisywane w tej przeglądarce (start.js). -->
+  <dialog class="settings" aria-labelledby="settings-title">
+    <div class="settings-body">
+      <div class="settings-head">
+        <h2 id="settings-title">Wygląd i dostępność</h2>
+        <button class="icon-button" type="button" data-settings-close aria-label="Zamknij ustawienia">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+
+      <fieldset class="setting">
+        <legend>Motyw</legend>
+        <div class="choices">
+          <label><input type="radio" name="theme" value="light"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" /></svg>Jasny</span></label>
+          <label><input type="radio" name="theme" value="dark"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>Ciemny</span></label>
+          <label><input type="radio" name="theme" value="auto"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12.5" rx="2" /><path d="M9 20.5h6M12 16.5v4" /></svg>Automatyczny</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="setting" aria-describedby="setting-contrast-hint">
+        <legend>Kontrast</legend>
+        <p class="setting-hint" id="setting-contrast-hint">Wysoki kontrast przyciemnia teksty i&nbsp;obramowania oraz wzmacnia kolory przycisków.</p>
+        <div class="choices">
+          <label><input type="radio" name="contrast" value="normal"><span>Standardowy</span></label>
+          <label><input type="radio" name="contrast" value="high"><span>Wysoki</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="setting" aria-describedby="setting-text-hint">
+        <legend>Wielkość tekstu</legend>
+        <p class="setting-hint" id="setting-text-hint">Powiększa tekst i&nbsp;przyciski na całej stronie.</p>
+        <div class="choices">
+          <label><input type="radio" name="textScale" value="100"><span>100%</span></label>
+          <label><input type="radio" name="textScale" value="115"><span>115%</span></label>
+          <label><input type="radio" name="textScale" value="130"><span>130%</span></label>
+          <label><input type="radio" name="textScale" value="150"><span>150%</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="setting" aria-describedby="setting-motion-hint">
+        <legend>Animacje</legend>
+        <p class="setting-hint" id="setting-motion-hint">Ograniczone wyłączają przejścia i&nbsp;ruchome efekty, także ptaka, który mruga i&nbsp;wodzi okiem.</p>
+        <div class="choices">
+          <label><input type="radio" name="motion" value="system"><span>Jak w&nbsp;systemie</span></label>
+          <label><input type="radio" name="motion" value="reduced"><span>Ograniczone</span></label>
+          <label><input type="radio" name="motion" value="full"><span>Pełne</span></label>
+        </div>
+      </fieldset>
+
+      <p class="settings-note">Ustawienia są zapamiętywane tylko w&nbsp;tej przeglądarce. Klawiszem Tab przechodzisz między elementami strony, a&nbsp;strzałkami wybierasz opcje w&nbsp;grupie.</p>
+
+      <div class="settings-foot">
+        <button class="text-button" type="button" data-settings-reset>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" /></svg>
+          Przywróć domyślne
+        </button>
+        <button class="button button-small" type="button" data-settings-close>Gotowe</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
