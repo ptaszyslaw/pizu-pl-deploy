@@ -70,7 +70,7 @@
         { slug: 'edytuj-pdf', name: 'Edytuj PDF', desc: 'Tekst i adnotacje' },
         { slug: 'wypelnij-formularz-pdf', name: 'Wypełnij formularz PDF', desc: 'Pola formularza, także po polsku' },
         { slug: 'znak-wodny-pdf', name: 'Znak wodny na PDF', desc: 'Napis na wszystkich lub wybranych stronach' },
-        { slug: 'zamaz-dane-w-pdf', name: 'Zamaż dane', desc: 'Trwale, bez możliwości odzyskania' },
+        { slug: 'zamaz-dane-w-pdf', name: 'Zamaż dane', desc: 'Anonimizacja — trwale, bez możliwości odzyskania' },
       ],
     },
   ]
