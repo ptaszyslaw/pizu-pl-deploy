@@ -223,7 +223,7 @@
             <h3>Co możesz tam zobaczyć</h3>
             <ul>
               <li>Pobieranie (GET) części narzędzia z&nbsp;jego serwera, np. pdf.pizu.pl, przy pierwszym użyciu niektórych funkcji, takich jak rozpoznawanie tekstu (OCR) czy zdjęcia HEIC. W&nbsp;PizuAudio przy pierwszym oddzielaniu wokalu także modelu AI (ok. 172&nbsp;MB) z&nbsp;Hugging Face. To przeglądarka ściąga narzędzie, a&nbsp;nie wysyła Twoich plików.</li>
-              <li>W&nbsp;PizuPDF czasem małe żądanie POST do <code>ingest.de.sentry.io</code> — raport o&nbsp;błędzie albo czas wczytywania strony, bez pliku i&nbsp;jego nazwy. Kliknij je, żeby zobaczyć, co zawiera.</li>
+              <li>W&nbsp;PizuPDF — tylko gdy narzędzie trafi na błąd — małe żądanie POST do <code>ingest.de.sentry.io</code> z&nbsp;technicznym raportem, bez pliku i&nbsp;jego nazwy. Przy zwykłej pracy go nie zobaczysz; gdy się pojawi, kliknij je, żeby zobaczyć, co zawiera.</li>
             </ul>
           </div>
         </div>
@@ -283,7 +283,7 @@
           </div>
           <div>
             <dt>Bez śledzenia</dt>
-            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki. PizuPDF wysyła do usługi Sentry (dane w&nbsp;Unii Europejskiej) techniczne raporty o&nbsp;błędach, a&nbsp;przy części wizyt także czas wczytywania strony — bez Twoich plików, ich nazw i&nbsp;adresu IP.</dd>
+            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki. PizuPDF wysyła do usługi Sentry (dane w&nbsp;Unii Europejskiej) techniczny raport tylko wtedy, gdy w&nbsp;narzędziu wystąpi błąd — bez Twoich plików, ich nazw i&nbsp;adresu IP.</dd>
           </div>
           <div>
             <dt>Wsparcie przez Suppi</dt>
