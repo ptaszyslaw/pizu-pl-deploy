@@ -30,7 +30,7 @@
   <script src="settings-init.js?v=d008af4809"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
   <link rel="stylesheet" href="pizu-shell.css?v=c054189e08">
-  <link rel="stylesheet" href="start.css?v=0d80e760e8">
+  <link rel="stylesheet" href="start.css?v=85e045e8c1">
   <script src="pizu-shell.js?v=98fed515b8" defer></script>
   <script src="start.js?v=29571391bf" defer></script>
 </head>
@@ -229,6 +229,27 @@
         </div>
       </details>
     </section>
+
+    <!-- BEGIN poradniki — sekcję wstawia scripts/poradniki.mjs z plików w poradniki/, nie edytuj jej tutaj -->
+    <section id="poradniki" class="guides" aria-labelledby="poradniki-tytul">
+      <div class="section-head">
+        <h2 id="poradniki-tytul">Poradniki</h2>
+        <p>Jak zrobić krok po kroku to, w&nbsp;czym pomagają narzędzia.</p>
+      </div>
+      <ul class="guide-list" role="list">
+        <li>
+          <h3><a href="/poradniki/dostepny-skan-pisma-z-podpisem/">Dostępny skan pisma z&nbsp;podpisem&nbsp;— jak pogodzić podpis z&nbsp;WCAG</a></h3>
+          <p>Skan podpisanego pisma to dla czytnika ekranu tylko obraz. Jak połączyć go z&nbsp;oryginałem z&nbsp;Worda, żeby pismo z&nbsp;podpisem przeczytała też osoba niewidoma.</p>
+          <p class="guide-date"><time datetime="2026-10-29">29 października 2026</time></p>
+        </li>
+        <li>
+          <h3><a href="/poradniki/faktura-z-ksef-w-pdf/">Faktura z&nbsp;KSeF w&nbsp;PDF&nbsp;— jak otworzyć i&nbsp;wydrukować plik XML</a></h3>
+          <p>E-faktura z&nbsp;KSeF to plik XML, który trudno przeczytać. Zobacz, jak w&nbsp;przeglądarce zamienić go na czytelny PDF z&nbsp;kodem QR&nbsp;— bez wysyłania pliku.</p>
+          <p class="guide-date"><time datetime="2026-10-29">29 października 2026</time></p>
+        </li>
+      </ul>
+    </section>
+    <!-- END poradniki -->
 
     <!-- Zwykły link do Suppi zamiast ich widżetu: widżet wczytywałby obrazek z suppi.pl przy każdej wizycie. -->
     <section id="wsparcie" class="support" aria-labelledby="wsparcie-tytul">

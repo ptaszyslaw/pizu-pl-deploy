@@ -1164,3 +1164,294 @@ main {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ── poradniki (scripts/poradniki.mjs) ─────────────────── */
+
+/* Sekcja na stronie głównej, lista /poradniki/ i „Inne poradniki” pod poradnikiem: karty jak „Sprawdź sam”. */
+.guides,
+.guide-more {
+  margin-bottom: 56px;
+}
+
+.guide-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-list li {
+  position: relative;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.guide-list li:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.guide-list h2,
+.guide-list h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.guide-list a {
+  text-decoration: none;
+}
+
+/* cała karta klikalna, jak karty narzędzi — link rozciągnięty na kartę */
+.guide-list a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+}
+
+.guide-list a:hover {
+  color: var(--brand-ink);
+}
+
+/* fokus z klawiatury: obwódka całej karty, jak przy kartach narzędzi */
+.guide-list a:focus-visible {
+  outline: none;
+}
+
+.guide-list li:has(a:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.guide-list p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.guide-list .guide-date {
+  font-size: 0.85rem;
+}
+
+.guide-all {
+  margin-top: 18px;
+}
+
+.guide-all a {
+  color: var(--brand-ink);
+  font-weight: 700;
+}
+
+/* okruszki nad poradnikiem i listą */
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0 24px;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* separator tylko dla oka: pusty tekst zastępczy po „/”, żeby czytnik ekranu nie mówił „›”
+   (przeglądarki bez tej składni biorą pierwszą wersję) */
+.crumbs li + li::before {
+  content: "›";
+  content: "›" / "";
+  margin-right: 4px;
+}
+
+.crumbs a {
+  color: var(--muted);
+}
+
+.crumbs a:hover {
+  color: var(--brand-ink);
+}
+
+.guide-index {
+  margin-bottom: 56px;
+}
+
+.guide-index h1,
+.guide-head h1 {
+  font-size: clamp(1.9rem, 4.4vw, 2.7rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.guide-index-lead {
+  margin: 10px 0 28px;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* sam poradnik: wygodna szerokość wiersza do czytania */
+.guide {
+  max-width: 46rem;
+  margin: 0 auto 48px;
+}
+
+.guide-more {
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.guide-more h2 {
+  margin-bottom: 16px;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.guide-head .guide-date {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.guide-draft {
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border: 2px dashed var(--brand-ink);
+  border-radius: 12px;
+  color: var(--brand-ink);
+  font-weight: 700;
+}
+
+.guide-toc {
+  margin-top: 1.6em;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.guide-toc-title {
+  font-weight: 700;
+}
+
+.guide-body .guide-toc ol {
+  margin-top: 8px;
+}
+
+.guide-toc ol {
+  margin: 8px 0 0;
+  padding-left: 1.4em;
+}
+
+.guide-toc li + li {
+  margin-top: 4px;
+}
+
+.guide-toc a,
+.guide-body a {
+  color: var(--brand-ink);
+  text-underline-offset: 0.15em;
+}
+
+.guide-body {
+  margin-top: 28px;
+  font-size: 1.075rem;
+  line-height: 1.7;
+}
+
+.guide-body > * + * {
+  margin-top: 1em;
+}
+
+.guide-body > p:first-child {
+  font-size: 1.15rem;
+}
+
+.guide-body h2 {
+  margin-top: 2.2em;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  scroll-margin-top: 16px;
+}
+
+.guide-body h3 {
+  margin-top: 1.6em;
+  font-size: 1.2rem;
+  font-weight: 800;
+  scroll-margin-top: 16px;
+}
+
+.guide-body ul,
+.guide-body ol {
+  padding-left: 1.4em;
+}
+
+.guide-body li + li {
+  margin-top: 0.45em;
+}
+
+.guide-body code {
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+  background: var(--chip);
+  font-size: 0.92em;
+}
+
+/* „> Uwaga” w Markdownie */
+.guide-body .note {
+  padding: 16px 20px;
+  border-left: 4px solid var(--brand);
+  border-radius: 0 14px 14px 0;
+  background: var(--surface);
+}
+
+.guide-body .note p + p {
+  margin-top: 0.8em;
+}
+
+.guide-tool {
+  margin-top: 40px;
+  padding: 24px 26px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.guide-tool-label {
+  color: var(--brand-ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-tool .button {
+  margin-top: 12px;
+}
+
+.guide-tool p:last-child {
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-motion="reduced"]) .guide-list li:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-list li,
+  .guide-tool {
+    padding: 20px;
+  }
+
+  .guide-body {
+    font-size: 1rem;
+  }
+}

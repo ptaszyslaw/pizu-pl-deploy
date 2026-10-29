@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+  >
+  <title>Faktura z KSeF w PDF — jak otworzyć i wydrukować plik XML | Pizu</title>
+  <meta name="description" content="E-faktura z KSeF to plik XML, który trudno przeczytać. Zobacz, jak w przeglądarce zamienić go na czytelny PDF z kodem QR — bez wysyłania pliku.">
+  <link rel="canonical" href="https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/">
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121419" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Faktura z KSeF w PDF — jak otworzyć i wydrukować plik XML | Pizu">
+  <meta property="og:description" content="E-faktura z KSeF to plik XML, który trudno przeczytać. Zobacz, jak w przeglądarce zamienić go na czytelny PDF z kodem QR — bez wysyłania pliku.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/">
+  <meta property="og:site_name" content="Pizu">
+  <meta property="og:locale" content="pl_PL">
+  <!-- grafika: scripts/og-image.html → node scripts/og-image.mjs -->
+  <meta property="og:image" content="https://pizu.pl/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ptak Pizu i napis: Pizu — narzędzia, które nie wysyłają Twoich plików. Dźwięk, zdjęcia, PDF.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
+  <script src="/settings-init.js?v=d008af4809"></script>
+  <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
+  <link rel="stylesheet" href="/pizu-shell.css?v=c054189e08">
+  <link rel="stylesheet" href="/start.css?v=85e045e8c1">
+  <script src="/pizu-shell.js?v=98fed515b8" defer></script>
+  <script src="/start.js?v=29571391bf" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Faktura z KSeF w PDF — jak otworzyć i wydrukować plik XML","description":"E-faktura z KSeF to plik XML, który trudno przeczytać. Zobacz, jak w przeglądarce zamienić go na czytelny PDF z kodem QR — bez wysyłania pliku.","datePublished":"2026-10-29","dateModified":"2026-10-29","inLanguage":"pl","url":"https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/","mainEntityOfPage":"https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/","image":"https://pizu.pl/og-image.png","author":{"@type":"Organization","name":"Pizu","url":"https://pizu.pl/"},"publisher":{"@type":"Organization","name":"Pizu","url":"https://pizu.pl/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pizu","item":"https://pizu.pl/"},{"@type":"ListItem","position":2,"name":"Poradniki","item":"https://pizu.pl/poradniki/"},{"@type":"ListItem","position":3,"name":"Faktura z KSeF w PDF — jak otworzyć i wydrukować plik XML","item":"https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/"}]}]}</script>
+</head>
+<body>
+  <a class="skip" href="#tresc">Przejdź do treści</a>
+
+  <pizu-header settings>
+    <!-- bez JavaScriptu zostają zwykłe linki; skrypt zamienia je na pełną belkę z menu -->
+    <nav class="pz-bar" aria-label="Narzędzia Pizu">
+      <a class="pz-logo" href="https://pizu.pl/"><span class="pz-logo-name">Pizu</span></a>
+      <a href="https://audio.pizu.pl/">PizuAudio</a>
+      <a href="https://grafika.pizu.pl/">PizuGrafika</a>
+      <a href="https://pdf.pizu.pl/">PizuPDF</a>
+    </nav>
+  </pizu-header>
+
+  <main id="tresc">
+    <nav class="crumbs" aria-label="Jesteś tutaj">
+      <ol><li><a href="/">Pizu</a></li><li><a href="/poradniki/">Poradniki</a></li></ol>
+    </nav>
+    <article class="guide">
+      <header class="guide-head">
+        <p class="eyebrow">Poradnik</p>
+        <h1>Faktura z&nbsp;KSeF w&nbsp;PDF&nbsp;— jak otworzyć i&nbsp;wydrukować plik XML</h1>
+        <p class="guide-date">Opublikowano <time datetime="2026-10-29">29 października 2026</time></p>
+      </header>
+      <div class="guide-body">
+<p>Od 2026 roku faktury między firmami coraz częściej nie są już PDF-ami, tylko plikami XML z&nbsp;Krajowego Systemu e-Faktur (KSeF). Program księgowy pokaże je bez problemu, ale gdy taki plik przyjdzie mailem, trafi do Ciebie od księgowej albo pobierzesz go z&nbsp;KSeF, po otwarciu zobaczysz ścianę znaczników zamiast faktury.</p>
+<p>Ten poradnik pokazuje, jak zamienić e-fakturę XML na czytelny PDF: do przeczytania, wydruku, przekazania dalej albo do archiwum.</p>
+<nav class="guide-toc" aria-label="Spis treści">
+<p class="guide-toc-title">W tym poradniku</p>
+<ol>
+  <li><a href="#skad-sie-biora-faktury-xml">Skąd się biorą faktury XML</a></li>
+  <li><a href="#jak-zamienic-xml-na-pdf-krok-po-kroku">Jak zamienić XML na PDF krok po kroku</a></li>
+  <li><a href="#numer-ksef-i-kod-qr-kiedy-sa-potrzebne">Numer KSeF i&nbsp;kod QR&nbsp;— kiedy są potrzebne</a></li>
+  <li><a href="#upo-czyli-potwierdzenie-odbioru">UPO, czyli potwierdzenie odbioru</a></li>
+  <li><a href="#jakie-pliki-obsluguje-narzedzie">Jakie pliki obsługuje narzędzie</a></li>
+  <li><a href="#dlaczego-w-przegladarce-a-nie-w-serwisie-online">Dlaczego w&nbsp;przeglądarce, a&nbsp;nie w&nbsp;serwisie online</a></li>
+</ol>
+</nav>
+<h2 id="skad-sie-biora-faktury-xml">Skąd się biorą faktury XML</h2>
+<p>KSeF wchodzi etapami w&nbsp;2026 roku. Od 1 lutego wystawiają w&nbsp;nim faktury największe firmy (ze sprzedażą powyżej 200 mln zł z&nbsp;VAT w&nbsp;2024 roku). Fakturę wystawioną w&nbsp;KSeF odbiera się przez KSeF, więc od tego dnia dotyczy to każdego, kto kupuje od takiej firmy. Od 1 kwietnia faktury w&nbsp;KSeF wystawiają pozostali przedsiębiorcy, także zwolnieni z&nbsp;VAT.</p>
+<p>Do końca 2026 roku firma może jeszcze wystawiać faktury poza KSeF, jeśli w&nbsp;danym miesiącu łączna kwota tych faktur (z&nbsp;VAT) nie przekracza 10 tys. zł&nbsp;— faktur dla konsumentów się nie wlicza. Prawo to przepada od faktury, która przekroczy limit: ją i&nbsp;wszystkie następne wystawia się już w&nbsp;KSeF. Kary za niestosowanie KSeF obowiązują od 1 stycznia 2027 roku. Tak mówi ustawa o&nbsp;VAT (art. 106ga, 145l, 145m i&nbsp;106ni), a&nbsp;praktyczne wyjaśnienia znajdziesz w&nbsp;serwisie Ministerstwa Finansów <a href="https://ksef.podatki.gov.pl/">ksef.podatki.gov.pl</a>.</p>
+<p>Faktura w&nbsp;KSeF to plik XML w&nbsp;ustalonej strukturze&nbsp;— obecnie FA(3). Taki plik:</p>
+<ul>
+  <li>pobierzesz z&nbsp;KSeF, np. w&nbsp;bezpłatnej Aplikacji Podatnika KSeF albo w&nbsp;programie do faktur,</li>
+  <li>dostaniesz od kontrahenta, który wysyła fakturę także mailem,</li>
+  <li>znajdziesz w&nbsp;paczce od biura rachunkowego.</li>
+</ul>
+<h2 id="jak-zamienic-xml-na-pdf-krok-po-kroku">Jak zamienić XML na PDF krok po kroku</h2>
+<ol>
+  <li>Otwórz narzędzie <a href="https://pdf.pizu.pl/faktura-xml-na-pdf/">Faktura XML na PDF</a> w&nbsp;PizuPDF.</li>
+  <li>Wczytaj plik XML faktury. Narzędzie od razu pokaże jej numer, sprzedawcę, nabywcę i&nbsp;kwotę&nbsp;— po tym poznasz, że to właściwy plik.</li>
+  <li>Jeśli masz numer KSeF faktury, wpisz go. Numeru nie ma w&nbsp;samym pliku XML, bo system nadaje go dopiero po przyjęciu faktury. Znajdziesz go zwykle w&nbsp;nazwie pobranego pliku, w&nbsp;UPO albo w&nbsp;aplikacji, z&nbsp;której pobrałeś fakturę. Narzędzie sprawdzi jego sumę kontrolną i&nbsp;to, czy zgadza się z&nbsp;NIP-em sprzedawcy.</li>
+  <li>Utwórz PDF, obejrzyj go w&nbsp;podglądzie i&nbsp;zapisz.</li>
+</ol>
+<p>Układ faktury pochodzi z&nbsp;otwartej biblioteki Ministerstwa Finansów do tworzenia wizualizacji e-faktur.</p>
+<h2 id="numer-ksef-i-kod-qr-kiedy-sa-potrzebne">Numer KSeF i&nbsp;kod QR&nbsp;— kiedy są potrzebne</h2>
+<p>To najważniejsza część, jeśli PDF ma trafić do kogoś innego.</p>
+<p>Fakturę z&nbsp;KSeF, którą udostępniasz albo której używasz poza systemem&nbsp;— np. wysyłasz jako PDF w&nbsp;mailu&nbsp;— trzeba oznaczyć kodem, który pozwala ją znaleźć w&nbsp;KSeF i&nbsp;sprawdzić jej dane (art. 106gb ust. 5 ustawy o&nbsp;VAT). Ten obowiązek ma nie tylko wystawca, ale każdy, kto używa faktury poza KSeF (ust. 5a), więc także nabywca czy biuro rachunkowe. Według zasad Ministerstwa Finansów to kod QR z&nbsp;numerem KSeF: odbiorca skanuje go telefonem i&nbsp;sprawdza, czy faktura jest w&nbsp;systemie.</p>
+<ul>
+  <li><strong>Z&nbsp;numerem KSeF</strong> PDF dostaje numer i&nbsp;kod QR. Kod działa dla niezmienionego pliku XML pobranego z&nbsp;KSeF, bo powstaje m.in. ze skrótu (SHA-256) tego pliku.</li>
+  <li><strong>Bez numeru KSeF</strong> PDF ma znak wodny „Podgląd”. Nadaje się do przeczytania, wydruku i&nbsp;archiwum, ale nie zastępuje faktury.</li>
+  <li><strong>Faktury wystawione w&nbsp;trybie offline</strong> (np. offline24, gdy nie ma połączenia z&nbsp;KSeF), jeszcze bez numeru KSeF, mają na wizualizacji dwa kody QR: „OFFLINE” i&nbsp;„CERTYFIKAT”&nbsp;— drugi potwierdza wystawcę i&nbsp;wymaga jego certyfikatu z&nbsp;KSeF (art. 106nda). Tego narzędzie nie robi: taki PDF przygotuje program, w&nbsp;którym faktura powstała. Po przesłaniu faktury do KSeF i&nbsp;nadaniu numeru wystarczy już jeden kod, z&nbsp;numerem KSeF.</li>
+</ul>
+<div class="note"><p><strong>Pamiętaj:</strong> narzędzie sprawdza format numeru, sumę kontrolną i&nbsp;NIP sprzedawcy, ale nie to, czy numer należy właśnie do tej faktury. To potwierdzisz w&nbsp;KSeF. Dla faktury przyjętej do KSeF źródłem danych jest plik XML w&nbsp;systemie, a&nbsp;PDF z&nbsp;tego narzędzia jest jego czytelną wizualizacją.</p><p>W&nbsp;archiwum zachowaj oryginalny plik XML obok PDF-u i&nbsp;nie zapisuj go ponownie w&nbsp;edytorze tekstu: każda zmiana, nawet jednej spacji, zmienia skrót pliku, a&nbsp;z&nbsp;nim kod QR.</p></div>
+<h2 id="upo-czyli-potwierdzenie-odbioru">UPO, czyli potwierdzenie odbioru</h2>
+<p>Tak samo zamienisz na PDF UPO&nbsp;— urzędowe poświadczenie odbioru, które KSeF wydaje dla przyjętych faktur, dla całej sesji albo dla jednej faktury. PDF z&nbsp;UPO ma numer sesji, dane wysyłającego i&nbsp;listę faktur z&nbsp;numerami KSeF, datami i&nbsp;skrótami plików. Czytelną kopię łatwiej odłożyć do archiwum albo pokazać komuś, kto nie ma dostępu do KSeF.</p>
+<h2 id="jakie-pliki-obsluguje-narzedzie">Jakie pliki obsługuje narzędzie</h2>
+<ul>
+  <li>e-faktury w&nbsp;strukturach FA(3), FA(2) i&nbsp;FA(1),</li>
+  <li>faktury VAT RR (FA_RR),</li>
+  <li>faktury PEF (zamówienia publiczne),</li>
+  <li>UPO z&nbsp;KSeF w&nbsp;wersjach schematu 4-2 i&nbsp;4-3.</li>
+</ul>
+<p>Kod QR z&nbsp;numerem KSeF działa na razie dla faktur FA(1)–FA(3).</p>
+<h2 id="dlaczego-w-przegladarce-a-nie-w-serwisie-online">Dlaczego w&nbsp;przeglądarce, a&nbsp;nie w&nbsp;serwisie online</h2>
+<p>Faktura to dane Twojej firmy i&nbsp;kontrahentów: NIP-y, adresy, kwoty, numery kont. Wiele konwerterów online wysyła plik na swój serwer i&nbsp;dopiero tam robi PDF. Tutaj PDF powstaje w&nbsp;Twojej przeglądarce&nbsp;— plik XML nie trafia nigdzie, a&nbsp;kod QR liczy Twój komputer. Możesz to <a href="https://pizu.pl/#sprawdz">sprawdzić sam</a> w&nbsp;narzędziach przeglądarki.</p>
+      </div>
+      <aside class="guide-tool" aria-label="Narzędzie z poradnika">
+        <p class="guide-tool-label">Narzędzie z poradnika</p>
+        <p><a class="button" href="https://pdf.pizu.pl/faktura-xml-na-pdf/">Faktura XML na PDF <span aria-hidden="true">→</span></a></p>
+        <p>Działa w przeglądarce, bez konta i&nbsp;opłat. Pliki nie opuszczają Twojego urządzenia.</p>
+      </aside>
+    </article>
+    <section class="guide-more" aria-labelledby="inne-poradniki">
+      <h2 id="inne-poradniki">Inne poradniki</h2>
+<ul class="guide-list" role="list">
+  <li>
+    <h3><a href="/poradniki/dostepny-skan-pisma-z-podpisem/">Dostępny skan pisma z&nbsp;podpisem&nbsp;— jak pogodzić podpis z&nbsp;WCAG</a></h3>
+    <p>Skan podpisanego pisma to dla czytnika ekranu tylko obraz. Jak połączyć go z&nbsp;oryginałem z&nbsp;Worda, żeby pismo z&nbsp;podpisem przeczytała też osoba niewidoma.</p>
+    <p class="guide-date"><time datetime="2026-10-29">29 października 2026</time></p>
+  </li>
+</ul>
+    </section>
+  </main>
+
+  <pizu-footer>
+    <p class="pz-foot">© 2026 Pizu · <a href="https://audio.pizu.pl/">PizuAudio</a> · <a href="https://grafika.pizu.pl/">PizuGrafika</a> · <a href="https://pdf.pizu.pl/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
+  </pizu-footer>
+
+  <!-- Okno „O Pizu” — jak „O aplikacji” w narzędziach. Prywatność streszcza zakładki „Prywatność” narzędzi:
+       przy zmianach w narzędziach (co pobierają, co zapisują w przeglądarce) zaktualizuj też tutaj. -->
+  <dialog class="about" aria-labelledby="about-title">
+    <div class="settings-body">
+      <div class="settings-head">
+        <h2 id="about-title">O Pizu</h2>
+        <button class="icon-button" type="button" data-dialog-close aria-label="Zamknij">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Informacje o Pizu">
+        <button type="button" role="tab" id="tab-privacy" aria-controls="panel-privacy" aria-selected="true" data-tab="privacy">Prywatność</button>
+        <button type="button" role="tab" id="tab-licenses" aria-controls="panel-licenses" aria-selected="false" tabindex="-1" data-tab="licenses">Licencje</button>
+        <button type="button" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1" data-tab="contact">Kontakt</button>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-privacy" aria-labelledby="tab-privacy" tabindex="0">
+        <p class="about-lead">Twoje pliki są przetwarzane lokalnie w&nbsp;przeglądarce, bez przesyłania ich na serwer. Szczegóły:</p>
+        <dl class="privacy-list">
+          <div>
+            <dt>Twoje pliki</dt>
+            <dd>PizuAudio, PizuGrafika i&nbsp;PizuPDF obrabiają pliki w&nbsp;Twojej przeglądarce, na Twoim urządzeniu. Ani pliki, ani wyniki nie są przesyłane na nasz serwer ani do innych firm.</dd>
+          </div>
+          <div>
+            <dt>Co pobiera przeglądarka</dt>
+            <dd>Przy otwarciu narzędzia — jego stronę z&nbsp;serwera Pizu, a&nbsp;przy niektórych funkcjach dodatkowe moduły z&nbsp;tego samego serwera (np. obsługę zdjęć HEIC i&nbsp;rozpoznawanie tekstu w&nbsp;PDF). Wyjątek: model AI do oddzielania wokalu w&nbsp;PizuAudio (ok. 172&nbsp;MB) przy pierwszym użyciu pobierany jest z&nbsp;serwisu Hugging Face, który widzi wtedy Twój adres IP — ale nie Twoje nagrania.</dd>
+          </div>
+          <div>
+            <dt>Czy potrzebny jest internet</dt>
+            <dd>Tak — do otwarcia narzędzia i&nbsp;pobrania potrzebnych modułów. Sama obróbka plików odbywa się już na Twoim urządzeniu.</dd>
+          </div>
+          <div>
+            <dt>Co zostaje w&nbsp;przeglądarce</dt>
+            <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
+          </div>
+          <div>
+            <dt>Bez śledzenia</dt>
+            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki. PizuPDF wysyła do usługi Sentry (dane w&nbsp;Unii Europejskiej) techniczny raport tylko wtedy, gdy w&nbsp;narzędziu wystąpi błąd — bez Twoich plików, ich nazw i&nbsp;adresu IP.</dd>
+          </div>
+          <div>
+            <dt>Wsparcie przez Suppi</dt>
+            <dd>Link „Wesprzyj Pizu” prowadzi do serwisu Suppi (Patronite). Strony Pizu łączą się z&nbsp;nim dopiero, gdy go klikniesz. Wpłatę obsługuje Suppi — strony Pizu nie mają dostępu do danych płatności.</dd>
+          </div>
+        </dl>
+        <p class="privacy-more">Szczegóły każdego narzędzia znajdziesz w&nbsp;jego oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Prywatność”.</p>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-licenses" aria-labelledby="tab-licenses" tabindex="0" hidden>
+        <p>Strona pizu.pl to własny kod (HTML, CSS i&nbsp;JavaScript) — bez bibliotek, czcionek ani skryptów z&nbsp;innych serwerów. Każde narzędzie ma własną listę licencji w&nbsp;oknie „O&nbsp;aplikacji”, w&nbsp;zakładce „Licencje”.</p>
+        <details class="license">
+          <summary>Ikona kubka (sekcja „Wesprzyj Pizu”) — Lucide, licencja ISC</summary>
+          <p>Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.</p>
+          <p>Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.</p>
+          <p>THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</p>
+        </details>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-contact" aria-labelledby="tab-contact" tabindex="0" hidden>
+        <p>Pytania, uwagi i&nbsp;zgłoszenia błędów: <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a>. Przy błędzie podaj nazwę narzędzia i&nbsp;numer wersji — jest w&nbsp;stopce każdego narzędzia.</p>
+        <p>Narzędzia Pizu są darmowe i&nbsp;bez reklam. Jeśli Ci pomogły, możesz <a href="https://suppi.pl/pizu" target="_blank" rel="noopener">postawić kawę na Suppi<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Panel „Wygląd i dostępność” — te same opcje i opisy co w narzędziach Pizu.
+       Zmiany działają od razu i są zapisywane w tej przeglądarce (start.js). -->
+  <dialog class="settings" aria-labelledby="settings-title">
+    <div class="settings-body">
+      <div class="settings-head">
+        <h2 id="settings-title">Wygląd i dostępność</h2>
+        <button class="icon-button" type="button" data-settings-close aria-label="Zamknij ustawienia">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+
+      <fieldset class="setting">
+        <legend>Motyw</legend>
+        <div class="choices">
+          <label><input type="radio" name="theme" value="light"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" /></svg>Jasny</span></label>
+          <label><input type="radio" name="theme" value="dark"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>Ciemny</span></label>
+          <label><input type="radio" name="theme" value="auto"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12.5" rx="2" /><path d="M9 20.5h6M12 16.5v4" /></svg>Automatyczny</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="setting" aria-describedby="setting-contrast-hint">
+        <legend>Kontrast</legend>
+        <p class="setting-hint" id="setting-contrast-hint">Wysoki kontrast przyciemnia teksty i&nbsp;obramowania oraz wzmacnia kolory przycisków.</p>
+        <div class="choices">
+          <label><input type="radio" name="contrast" value="normal"><span>Standardowy</span></label>
+          <label><input type="radio" name="contrast" value="high"><span>Wysoki</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="setting" aria-describedby="setting-text-hint">
+        <legend>Wielkość tekstu</legend>
+        <p class="setting-hint" id="setting-text-hint">Powiększa tekst i&nbsp;przyciski na całej stronie.</p>
+        <div class="choices">
+          <label><input type="radio" name="textScale" value="100"><span>100%</span></label>
+          <label><input type="radio" name="textScale" value="115"><span>115%</span></label>
+          <label><input type="radio" name="textScale" value="130"><span>130%</span></label>
+          <label><input type="radio" name="textScale" value="150"><span>150%</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="setting" aria-describedby="setting-motion-hint">
+        <legend>Animacje</legend>
+        <p class="setting-hint" id="setting-motion-hint">Ograniczone wyłączają przejścia i&nbsp;ruchome efekty, także ptaka, który mruga i&nbsp;wodzi okiem.</p>
+        <div class="choices">
+          <label><input type="radio" name="motion" value="system"><span>Jak w&nbsp;systemie</span></label>
+          <label><input type="radio" name="motion" value="reduced"><span>Ograniczone</span></label>
+          <label><input type="radio" name="motion" value="full"><span>Pełne</span></label>
+        </div>
+      </fieldset>
+
+      <p class="settings-note">Ustawienia są zapamiętywane tylko w&nbsp;tej przeglądarce. Klawiszem Tab przechodzisz między elementami strony, a&nbsp;strzałkami wybierasz opcje w&nbsp;grupie.</p>
+
+      <div class="settings-foot">
+        <button class="text-button" type="button" data-settings-reset>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" /></svg>
+          Przywróć domyślne
+        </button>
+        <button class="button button-small" type="button" data-settings-close>Gotowe</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
