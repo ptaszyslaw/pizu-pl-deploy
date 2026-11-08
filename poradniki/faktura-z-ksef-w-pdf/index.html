@@ -27,12 +27,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
-  <script src="/settings-init.js?v=d008af4809"></script>
+  <script src="/settings-init.js?v=dc174dd3ac"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
   <link rel="stylesheet" href="/pizu-shell.css?v=c054189e08">
   <link rel="stylesheet" href="/start.css?v=85e045e8c1">
-  <script src="/pizu-shell.js?v=98fed515b8" defer></script>
-  <script src="/start.js?v=29571391bf" defer></script>
+  <script src="/pizu-shell.js?v=b1a6492cc6" defer></script>
+  <script src="/start.js?v=1de28d540a" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Faktura z KSeF w PDF — jak otworzyć i wydrukować plik XML","description":"E-faktura z KSeF to plik XML, który trudno przeczytać. Zobacz, jak w przeglądarce zamienić go na czytelny PDF z kodem QR — bez wysyłania pliku.","datePublished":"2026-10-29","dateModified":"2026-10-29","inLanguage":"pl","url":"https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/","mainEntityOfPage":"https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/","image":"https://pizu.pl/og-image.png","author":{"@type":"Organization","name":"Pizu","url":"https://pizu.pl/"},"publisher":{"@type":"Organization","name":"Pizu","url":"https://pizu.pl/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pizu","item":"https://pizu.pl/"},{"@type":"ListItem","position":2,"name":"Poradniki","item":"https://pizu.pl/poradniki/"},{"@type":"ListItem","position":3,"name":"Faktura z KSeF w PDF — jak otworzyć i wydrukować plik XML","item":"https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/"}]}]}</script>
 </head>
 <body>
@@ -42,9 +42,9 @@
     <!-- bez JavaScriptu zostają zwykłe linki; skrypt zamienia je na pełną belkę z menu -->
     <nav class="pz-bar" aria-label="Narzędzia Pizu">
       <a class="pz-logo" href="https://pizu.pl/"><span class="pz-logo-name">Pizu</span></a>
-      <a href="https://audio.pizu.pl/">PizuAudio</a>
-      <a href="https://grafika.pizu.pl/">PizuGrafika</a>
-      <a href="https://pdf.pizu.pl/">PizuPDF</a>
+      <a href="https://pizu.pl/audio/">PizuAudio</a>
+      <a href="https://pizu.pl/grafika/">PizuGrafika</a>
+      <a href="https://pizu.pl/pdf/">PizuPDF</a>
     </nav>
   </pizu-header>
 
@@ -83,7 +83,7 @@
 </ul>
 <h2 id="jak-zamienic-xml-na-pdf-krok-po-kroku">Jak zamienić XML na PDF krok po kroku</h2>
 <ol>
-  <li>Otwórz narzędzie <a href="https://pdf.pizu.pl/faktura-xml-na-pdf/">Faktura XML na PDF</a> w&nbsp;PizuPDF.</li>
+  <li>Otwórz narzędzie <a href="https://pizu.pl/pdf/faktura-xml-na-pdf/">Faktura XML na PDF</a> w&nbsp;PizuPDF.</li>
   <li>Wczytaj plik XML faktury. Narzędzie od razu pokaże jej numer, sprzedawcę, nabywcę i&nbsp;kwotę&nbsp;— po tym poznasz, że to właściwy plik.</li>
   <li>Jeśli masz numer KSeF faktury, wpisz go. Numeru nie ma w&nbsp;samym pliku XML, bo system nadaje go dopiero po przyjęciu faktury. Znajdziesz go zwykle w&nbsp;nazwie pobranego pliku, w&nbsp;UPO albo w&nbsp;aplikacji, z&nbsp;której pobrałeś fakturę. Narzędzie sprawdzi jego sumę kontrolną i&nbsp;to, czy zgadza się z&nbsp;NIP-em sprzedawcy.</li>
   <li>Utwórz PDF, obejrzyj go w&nbsp;podglądzie i&nbsp;zapisz.</li>
@@ -113,7 +113,7 @@
       </div>
       <aside class="guide-tool" aria-label="Narzędzie z poradnika">
         <p class="guide-tool-label">Narzędzie z poradnika</p>
-        <p><a class="button" href="https://pdf.pizu.pl/faktura-xml-na-pdf/">Faktura XML na PDF <span aria-hidden="true">→</span></a></p>
+        <p><a class="button" href="https://pizu.pl/pdf/faktura-xml-na-pdf/">Faktura XML na PDF <span aria-hidden="true">→</span></a></p>
         <p>Działa w przeglądarce, bez konta i&nbsp;opłat. Pliki nie opuszczają Twojego urządzenia.</p>
       </aside>
     </article>
@@ -135,7 +135,7 @@
   </main>
 
   <pizu-footer>
-    <p class="pz-foot">© 2026 Pizu · <a href="https://audio.pizu.pl/">PizuAudio</a> · <a href="https://grafika.pizu.pl/">PizuGrafika</a> · <a href="https://pdf.pizu.pl/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
+    <p class="pz-foot">© 2026 Pizu · <a href="https://pizu.pl/audio/">PizuAudio</a> · <a href="https://pizu.pl/grafika/">PizuGrafika</a> · <a href="https://pizu.pl/pdf/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
   </pizu-footer>
 
   <!-- Okno „O Pizu” — jak „O aplikacji” w narzędziach. Prywatność streszcza zakładki „Prywatność” narzędzi:
@@ -172,7 +172,7 @@
           </div>
           <div>
             <dt>Co zostaje w&nbsp;przeglądarce</dt>
-            <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
+            <dd>Ustawienia wyglądu wspólne dla strony głównej i narzędzi na pizu.pl, zapisywane w przeglądarce bez ciasteczek. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
           </div>
           <div>
             <dt>Bez śledzenia</dt>

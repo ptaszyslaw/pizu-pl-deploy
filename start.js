@@ -7,9 +7,19 @@
   var Settings = window.PizuSettings;
   var dialog = document.querySelector("dialog.settings");
   // bez <dialog> (bardzo stare przeglądarki) panel nie zadziała — przycisk w belce wtedy nic nie robi
-  if (!Settings || !dialog || typeof dialog.showModal !== "function") return;
+  if (!Settings) return;
 
   var current = Settings.load();
+
+  window.addEventListener("storage", function (event) {
+    if (event.key !== "pizu-settings" && event.key !== null) return;
+    if (event.storageArea && event.storageArea !== window.localStorage) return;
+    current = Settings.load();
+    Settings.apply(current);
+    if (dialog) syncInputs();
+  });
+
+  if (!dialog || typeof dialog.showModal !== "function") return;
 
   function syncInputs() {
     var inputs = dialog.querySelectorAll("input[type=radio]");

@@ -12,6 +12,11 @@
     } catch (e) {
       // pamięć zablokowana albo uszkodzony wpis: domyślne ustawienia
     }
+    return normalize(s);
+  }
+
+  function normalize(s) {
+    s = s || {};
     return {
       theme: s.theme === "light" || s.theme === "dark" ? s.theme : DEFAULTS.theme,
       contrast: s.contrast === "high" ? "high" : DEFAULTS.contrast,
@@ -35,6 +40,7 @@
 
   // Wartości domyślne nie zostawiają atrybutów — wtedy o motywie i animacjach decyduje system.
   function apply(s) {
+    s = normalize(s);
     var root = document.documentElement;
     setAttr(root, "theme", s.theme === "auto" ? null : s.theme);
     setAttr(root, "contrast", s.contrast === "high" ? "high" : null);

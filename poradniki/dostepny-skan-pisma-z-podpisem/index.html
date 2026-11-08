@@ -27,12 +27,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
-  <script src="/settings-init.js?v=d008af4809"></script>
+  <script src="/settings-init.js?v=dc174dd3ac"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
   <link rel="stylesheet" href="/pizu-shell.css?v=c054189e08">
   <link rel="stylesheet" href="/start.css?v=85e045e8c1">
-  <script src="/pizu-shell.js?v=98fed515b8" defer></script>
-  <script src="/start.js?v=29571391bf" defer></script>
+  <script src="/pizu-shell.js?v=b1a6492cc6" defer></script>
+  <script src="/start.js?v=1de28d540a" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dostępny skan pisma z podpisem — jak pogodzić podpis z WCAG","description":"Skan podpisanego pisma to dla czytnika ekranu tylko obraz. Jak połączyć go z oryginałem z Worda, żeby pismo z podpisem przeczytała też osoba niewidoma.","datePublished":"2026-10-29","dateModified":"2026-10-29","inLanguage":"pl","url":"https://pizu.pl/poradniki/dostepny-skan-pisma-z-podpisem/","mainEntityOfPage":"https://pizu.pl/poradniki/dostepny-skan-pisma-z-podpisem/","image":"https://pizu.pl/og-image.png","author":{"@type":"Organization","name":"Pizu","url":"https://pizu.pl/"},"publisher":{"@type":"Organization","name":"Pizu","url":"https://pizu.pl/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pizu","item":"https://pizu.pl/"},{"@type":"ListItem","position":2,"name":"Poradniki","item":"https://pizu.pl/poradniki/"},{"@type":"ListItem","position":3,"name":"Dostępny skan pisma z podpisem — jak pogodzić podpis z WCAG","item":"https://pizu.pl/poradniki/dostepny-skan-pisma-z-podpisem/"}]}]}</script>
 </head>
 <body>
@@ -42,9 +42,9 @@
     <!-- bez JavaScriptu zostają zwykłe linki; skrypt zamienia je na pełną belkę z menu -->
     <nav class="pz-bar" aria-label="Narzędzia Pizu">
       <a class="pz-logo" href="https://pizu.pl/"><span class="pz-logo-name">Pizu</span></a>
-      <a href="https://audio.pizu.pl/">PizuAudio</a>
-      <a href="https://grafika.pizu.pl/">PizuGrafika</a>
-      <a href="https://pdf.pizu.pl/">PizuPDF</a>
+      <a href="https://pizu.pl/audio/">PizuAudio</a>
+      <a href="https://pizu.pl/grafika/">PizuGrafika</a>
+      <a href="https://pizu.pl/pdf/">PizuPDF</a>
     </nav>
   </pizu-header>
 
@@ -97,12 +97,12 @@
   <li>skan jest oznaczony jako element dekoracyjny (artefakt), więc czytnik ekranu go pomija i&nbsp;czyta tekst,</li>
   <li>na końcu tekstu dochodzi krótka, niewidoczna informacja o&nbsp;podpisie, np. „Dokument podpisany odręcznie przez Jana Kowalskiego, dyrektora szkoły”.</li>
 </ul>
-<p>Tak działa narzędzie <a href="https://pdf.pizu.pl/dostepny-skan-pisma/">Dostępny skan pisma</a> w&nbsp;PizuPDF. Działa w&nbsp;przeglądarce, a&nbsp;pliki nie opuszczają Twojego komputera&nbsp;— to ważne przy pismach z&nbsp;danymi osobowymi.</p>
+<p>Tak działa narzędzie <a href="https://pizu.pl/pdf/dostepny-skan-pisma/">Dostępny skan pisma</a> w&nbsp;PizuPDF. Działa w&nbsp;przeglądarce, a&nbsp;pliki nie opuszczają Twojego komputera&nbsp;— to ważne przy pismach z&nbsp;danymi osobowymi.</p>
 <h2 id="krok-po-kroku">Krok po kroku</h2>
 <ol>
   <li><strong>Zapisz oryginał jako PDF z&nbsp;tagami.</strong> W&nbsp;Wordzie: Plik → Zapisz jako → PDF → Opcje → zaznacz „Tagi struktury dokumentu dla ułatwień dostępu”. W&nbsp;LibreOffice: Plik → Eksportuj jako PDF → zaznacz „Uniwersalna dostępność (PDF/UA)”. Przy okazji wpisz tytuł dokumentu we właściwościach pliku&nbsp;— czytnik ekranu podaje go jako pierwszy.</li>
-  <li><strong>Zeskanuj podpisane pismo.</strong> Wystarczy PDF ze skanera albo zdjęcia stron (JPG, PNG). Zdjęcie z&nbsp;telefonu zrób prosto nad kartką i&nbsp;przytnij do samej kartki, np. narzędziem <a href="https://grafika.pizu.pl/kadruj-zdjecie/">Kadruj i&nbsp;zmień rozmiar</a>&nbsp;— dopasowanie poprawia tylko niewielkie przesunięcie, przekrzywienie (do 3°) i&nbsp;różnicę wielkości (do 10%). Strony skanu muszą odpowiadać stronom oryginału.</li>
-  <li><strong>Otwórz <a href="https://pdf.pizu.pl/dostepny-skan-pisma/">Dostępny skan pisma</a> i&nbsp;wczytaj oba pliki:</strong> najpierw PDF z&nbsp;tekstem, potem skan. Narzędzie od razu ostrzeże, jeśli PDF nie ma tagów, języka albo tytułu.</li>
+  <li><strong>Zeskanuj podpisane pismo.</strong> Wystarczy PDF ze skanera albo zdjęcia stron (JPG, PNG). Zdjęcie z&nbsp;telefonu zrób prosto nad kartką i&nbsp;przytnij do samej kartki, np. narzędziem <a href="https://pizu.pl/grafika/kadruj-zdjecie/">Kadruj i&nbsp;zmień rozmiar</a>&nbsp;— dopasowanie poprawia tylko niewielkie przesunięcie, przekrzywienie (do 3°) i&nbsp;różnicę wielkości (do 10%). Strony skanu muszą odpowiadać stronom oryginału.</li>
+  <li><strong>Otwórz <a href="https://pizu.pl/pdf/dostepny-skan-pisma/">Dostępny skan pisma</a> i&nbsp;wczytaj oba pliki:</strong> najpierw PDF z&nbsp;tekstem, potem skan. Narzędzie od razu ostrzeże, jeśli PDF nie ma tagów, języka albo tytułu.</li>
   <li><strong>Sprawdź dopasowanie.</strong> Narzędzie samo ustawia skan na tekście: przesuwa go, skaluje i&nbsp;prostuje. W&nbsp;podglądzie tekst oryginału jest czerwony, a&nbsp;skan szary&nbsp;— tam, gdzie się pokrywają, litery wychodzą czarne. Przy każdej stronie widzisz zgodność skanu z&nbsp;tekstem. Gdy jest niska, popraw dopasowanie ręcznie albo sprawdź, czy to na pewno ta sama strona.</li>
   <li><strong>Wpisz informację o&nbsp;podpisie i&nbsp;ustaw język.</strong> Word często zostawia w&nbsp;PDF-ie język angielski&nbsp;— narzędzie zaproponuje polski.</li>
   <li><strong>Kliknij „Utwórz dostępny PDF”</strong> i&nbsp;zapisz plik&nbsp;— dostanie dopisek <code>-dostepny.pdf</code>.</li>
@@ -118,11 +118,11 @@
   <li><strong>Ta sama liczba stron.</strong> Każda strona skanu trafia na odpowiadającą jej stronę oryginału.</li>
 </ul>
 <h2 id="gdy-nie-masz-oryginalu">Gdy nie masz oryginału</h2>
-<p>Jeśli pisma w&nbsp;wersji edytowalnej nie ma (przyszło z&nbsp;zewnątrz, jest stare), zostaje rozpoznawanie tekstu. Narzędzie <a href="https://pdf.pizu.pl/ocr-pdf/">OCR PDF</a> doda do skanu warstwę tekstu, dzięki której zadziała wyszukiwanie i&nbsp;kopiowanie. Dla pełnej dostępności trzeba jednak potem sprawdzić tekst i&nbsp;nadać mu strukturę, więc gdy tylko się da, poproś autora pisma o&nbsp;plik z&nbsp;Worda.</p>
+<p>Jeśli pisma w&nbsp;wersji edytowalnej nie ma (przyszło z&nbsp;zewnątrz, jest stare), zostaje rozpoznawanie tekstu. Narzędzie <a href="https://pizu.pl/pdf/ocr-pdf/">OCR PDF</a> doda do skanu warstwę tekstu, dzięki której zadziała wyszukiwanie i&nbsp;kopiowanie. Dla pełnej dostępności trzeba jednak potem sprawdzić tekst i&nbsp;nadać mu strukturę, więc gdy tylko się da, poproś autora pisma o&nbsp;plik z&nbsp;Worda.</p>
       </div>
       <aside class="guide-tool" aria-label="Narzędzie z poradnika">
         <p class="guide-tool-label">Narzędzie z poradnika</p>
-        <p><a class="button" href="https://pdf.pizu.pl/dostepny-skan-pisma/">Dostępny skan pisma <span aria-hidden="true">→</span></a></p>
+        <p><a class="button" href="https://pizu.pl/pdf/dostepny-skan-pisma/">Dostępny skan pisma <span aria-hidden="true">→</span></a></p>
         <p>Działa w przeglądarce, bez konta i&nbsp;opłat. Pliki nie opuszczają Twojego urządzenia.</p>
       </aside>
     </article>
@@ -144,7 +144,7 @@
   </main>
 
   <pizu-footer>
-    <p class="pz-foot">© 2026 Pizu · <a href="https://audio.pizu.pl/">PizuAudio</a> · <a href="https://grafika.pizu.pl/">PizuGrafika</a> · <a href="https://pdf.pizu.pl/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
+    <p class="pz-foot">© 2026 Pizu · <a href="https://pizu.pl/audio/">PizuAudio</a> · <a href="https://pizu.pl/grafika/">PizuGrafika</a> · <a href="https://pizu.pl/pdf/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
   </pizu-footer>
 
   <!-- Okno „O Pizu” — jak „O aplikacji” w narzędziach. Prywatność streszcza zakładki „Prywatność” narzędzi:
@@ -181,7 +181,7 @@
           </div>
           <div>
             <dt>Co zostaje w&nbsp;przeglądarce</dt>
-            <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
+            <dd>Ustawienia wyglądu wspólne dla strony głównej i narzędzi na pizu.pl, zapisywane w przeglądarce bez ciasteczek. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
           </div>
           <div>
             <dt>Bez śledzenia</dt>

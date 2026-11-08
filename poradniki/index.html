@@ -27,12 +27,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
-  <script src="/settings-init.js?v=d008af4809"></script>
+  <script src="/settings-init.js?v=dc174dd3ac"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
   <link rel="stylesheet" href="/pizu-shell.css?v=c054189e08">
   <link rel="stylesheet" href="/start.css?v=85e045e8c1">
-  <script src="/pizu-shell.js?v=98fed515b8" defer></script>
-  <script src="/start.js?v=29571391bf" defer></script>
+  <script src="/pizu-shell.js?v=b1a6492cc6" defer></script>
+  <script src="/start.js?v=1de28d540a" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Poradniki","description":"Poradniki Pizu: jak zrobić krok po kroku to, w czym pomagają narzędzia do PDF-ów, zdjęć i dźwięku — bez wysyłania plików na serwer.","url":"https://pizu.pl/poradniki/","inLanguage":"pl","hasPart":[{"@type":"Article","headline":"Czy narzędzie online wysyła Twój plik? Jak to sprawdzić","url":"https://pizu.pl/poradniki/czy-narzedzie-online-wysyla-plik/"},{"@type":"Article","headline":"Dostępny skan pisma z podpisem — jak pogodzić podpis z WCAG","url":"https://pizu.pl/poradniki/dostepny-skan-pisma-z-podpisem/"},{"@type":"Article","headline":"Faktura z KSeF w PDF — jak otworzyć i wydrukować plik XML","url":"https://pizu.pl/poradniki/faktura-z-ksef-w-pdf/"}]}</script>
 </head>
 <body>
@@ -42,9 +42,9 @@
     <!-- bez JavaScriptu zostają zwykłe linki; skrypt zamienia je na pełną belkę z menu -->
     <nav class="pz-bar" aria-label="Narzędzia Pizu">
       <a class="pz-logo" href="https://pizu.pl/"><span class="pz-logo-name">Pizu</span></a>
-      <a href="https://audio.pizu.pl/">PizuAudio</a>
-      <a href="https://grafika.pizu.pl/">PizuGrafika</a>
-      <a href="https://pdf.pizu.pl/">PizuPDF</a>
+      <a href="https://pizu.pl/audio/">PizuAudio</a>
+      <a href="https://pizu.pl/grafika/">PizuGrafika</a>
+      <a href="https://pizu.pl/pdf/">PizuPDF</a>
     </nav>
   </pizu-header>
 
@@ -76,7 +76,7 @@
   </main>
 
   <pizu-footer>
-    <p class="pz-foot">© 2026 Pizu · <a href="https://audio.pizu.pl/">PizuAudio</a> · <a href="https://grafika.pizu.pl/">PizuGrafika</a> · <a href="https://pdf.pizu.pl/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
+    <p class="pz-foot">© 2026 Pizu · <a href="https://pizu.pl/audio/">PizuAudio</a> · <a href="https://pizu.pl/grafika/">PizuGrafika</a> · <a href="https://pizu.pl/pdf/">PizuPDF</a> · <a href="mailto:kontakt@pizu.pl">kontakt@pizu.pl</a></p>
   </pizu-footer>
 
   <!-- Okno „O Pizu” — jak „O aplikacji” w narzędziach. Prywatność streszcza zakładki „Prywatność” narzędzi:
@@ -113,7 +113,7 @@
           </div>
           <div>
             <dt>Co zostaje w&nbsp;przeglądarce</dt>
-            <dd>Ustawienia wyglądu, zapisywane osobno dla każdego adresu. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
+            <dd>Ustawienia wyglądu wspólne dla strony głównej i narzędzi na pizu.pl, zapisywane w przeglądarce bez ciasteczek. PizuPDF pamięta też kopie ostatnio otwieranych plików, żeby łatwo do nich wrócić — każdą usuniesz ikoną kosza. PizuAudio przechowuje pobrany model AI, żeby nie ściągać go ponownie. Do zamknięcia karty narzędzie pamięta też, że wzmianka o&nbsp;wsparciu już się pokazała. Wszystko usuniesz, czyszcząc dane witryny w&nbsp;ustawieniach przeglądarki.</dd>
           </div>
           <div>
             <dt>Bez śledzenia</dt>

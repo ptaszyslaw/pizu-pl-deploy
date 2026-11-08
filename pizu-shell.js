@@ -24,13 +24,13 @@
 (function () {
   if (window.customElements === undefined || customElements.get('pizu-header')) return
 
-  // Narzędzia w menu. Adresy (slug) to osobne strony narzędzi, np. https://pdf.pizu.pl/scal-pdf/.
+  // Narzędzia w menu. Adresy (slug) to osobne strony narzędzi, np. https://pizu.pl/pdf/scal-pdf/.
   var GROUPS = [
     {
       id: 'audio',
       label: 'Audio',
       about: 'Dźwięk i muzyka',
-      home: 'https://audio.pizu.pl/',
+      home: 'https://pizu.pl/audio/',
       tools: [
         { slug: 'oddziel-wokal', name: 'Oddziel wokal', desc: 'Wokal i podkład, tonacja, tempo, karaoke' },
         { slug: 'przytnij-mp3', name: 'Przytnij i konwertuj', desc: 'Wytnij fragment, zapisz jako MP3 lub WAV' },
@@ -40,7 +40,7 @@
       id: 'grafika',
       label: 'Grafika',
       about: 'Zdjęcia i grafika',
-      home: 'https://grafika.pizu.pl/',
+      home: 'https://pizu.pl/grafika/',
       tools: [
         { slug: 'konwertuj-zdjecia', name: 'Konwertuj i kompresuj', desc: 'JPG, PNG, WebP, AVIF, HEIC — mniejsze pliki' },
         { slug: 'kadruj-zdjecie', name: 'Kadruj i zmień rozmiar', desc: 'Proporcje, gotowe rozmiary, zdjęcie do dowodu' },
@@ -52,7 +52,7 @@
       id: 'pdf',
       label: 'PDF',
       about: 'Dokumenty PDF',
-      home: 'https://pdf.pizu.pl/',
+      home: 'https://pizu.pl/pdf/',
       wide: true,
       tools: [
         { slug: 'scal-pdf', name: 'Scal PDF', desc: 'Kilka plików w jeden dokument' },
@@ -96,6 +96,14 @@
     '<svg class="pz-spinner" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 9 9"/></svg>'
   var BUSY_TEXT = '<span class="pz-visually-hidden"> (trwa przetwarzanie)</span>'
   var NEW_TAB = '<span class="pz-visually-hidden"> (otwiera się w nowej karcie)</span>'
+
+  // Jawne atrybuty mają pierwszeństwo, także w Electronie (file: lub własny origin).
+  function currentPage(location, site, tool) {
+    var match = location.hostname === 'pizu.pl' && location.pathname.match(/^\/(pdf|audio|grafika)(?:\/|$)/)
+    var category = site !== null ? site : (match ? match[1] : location.hostname === 'pizu.pl' && location.pathname === '/' ? 'home' : '')
+    var slug = match ? location.pathname.slice(match[1].length + 2).replace(/\/$/, '') : ''
+    return { site: category, tool: tool !== null ? tool : (match && category === match[1] ? slug : '') }
+  }
 
   function toolUrl(group, tool) {
     return group.home + tool.slug + '/'
@@ -191,7 +199,8 @@
       var openId = open && open.getAttribute('aria-controls')
       var focused = document.activeElement
       var focusedId = focused && this.contains(focused) && focused.getAttribute('aria-controls')
-      this.innerHTML = renderHeader(this.getAttribute('site') || '', this.getAttribute('tool') || '', this.hasAttribute('settings'), busy)
+      var current = currentPage(window.location, this.getAttribute('site'), this.getAttribute('tool'))
+      this.innerHTML = renderHeader(current.site, current.tool, this.hasAttribute('settings'), busy)
       if (openId) {
         var button = this.querySelector('[aria-controls="' + openId + '"]')
         if (button) this.toggle(button, true)
@@ -243,7 +252,7 @@
       if (!link) return
       var site = link.getAttribute('data-pz-site')
       // narzędzie tej samej strony: niech strona przełączy je sama (Ctrl / środkowy przycisk → nowa karta)
-      if (site && site === this.getAttribute('site') && !(e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0)) {
+      if (site && site === currentPage(window.location, this.getAttribute('site'), this.getAttribute('tool')).site && !(e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0)) {
         var nav = new CustomEvent('pizu-navigate', { bubbles: true, cancelable: true, detail: { slug: link.getAttribute('data-pz-slug') || '' } })
         if (!this.dispatchEvent(nav)) e.preventDefault()
       }
