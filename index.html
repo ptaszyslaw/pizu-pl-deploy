@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta
     http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+    content="default-src 'self'; script-src 'self'; connect-src 'self' https://o4512300568477696.ingest.de.sentry.io; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
   >
   <title>Pizu — narzędzia, które nie wysyłają Twoich plików</title>
   <meta name="description" content="Darmowe narzędzia do dźwięku, zdjęć i PDF-ów, które działają w Twojej przeglądarce. Pliki są przetwarzane na Twoim urządzeniu, bez przesyłania ich na serwer.">
@@ -26,6 +26,7 @@
   <meta property="og:image:alt" content="Ptak Pizu i napis: Pizu — narzędzia, które nie wysyłają Twoich plików. Dźwięk, zdjęcia, PDF.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="error-report.js?v=366d8d184c"></script>
   <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
   <script src="settings-init.js?v=dc174dd3ac"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
@@ -196,7 +197,7 @@
 
     <!-- Test prywatności dla każdego: karta Sieć w narzędziach przeglądarki (sprawdzone 23.10 na zamazywaniu z OCR).
          Wyjątki muszą się zgadzać z zakładką „Prywatność” w oknie „O Pizu”: model AI z Hugging Face w PizuAudio
-         i raporty Sentry w PizuPDF. Gdy narzędzie zacznie łączyć się z czymś nowym, popraw też tę sekcję. -->
+         i raporty Sentry tylko przy błędzie na pizu.pl oraz w PizuPDF, PizuAudio i PizuGrafika. Gdy narzędzie zacznie łączyć się z czymś nowym, popraw też tę sekcję. -->
     <section id="sprawdz" class="check" aria-labelledby="sprawdz-tytul">
       <div class="check-head">
         <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.4 15.4L20.5 20.5" /></svg>
@@ -223,7 +224,7 @@
             <h3>Co możesz tam zobaczyć</h3>
             <ul>
               <li>Pobieranie (GET) części narzędzia z&nbsp;jego serwera, np. pizu.pl/pdf/, przy pierwszym użyciu niektórych funkcji, takich jak rozpoznawanie tekstu (OCR) czy zdjęcia HEIC. W&nbsp;PizuAudio przy pierwszym oddzielaniu wokalu także modelu AI (ok. 172&nbsp;MB) z&nbsp;Hugging Face. To przeglądarka ściąga narzędzie, a&nbsp;nie wysyła Twoich plików.</li>
-              <li>W&nbsp;PizuPDF — tylko gdy narzędzie trafi na błąd — małe żądanie POST do <code>ingest.de.sentry.io</code> z&nbsp;technicznym raportem, bez pliku i&nbsp;jego nazwy. Przy zwykłej pracy go nie zobaczysz; gdy się pojawi, kliknij je, żeby zobaczyć, co zawiera.</li>
+              <li>Na pizu.pl i&nbsp;w&nbsp;narzędziach — tylko gdy trafią na błąd — małe żądanie POST do <code>ingest.de.sentry.io</code> z&nbsp;technicznym raportem, bez pliku i&nbsp;jego nazwy. Przy zwykłej pracy go nie zobaczysz; gdy się pojawi, kliknij je, żeby zobaczyć, co zawiera.</li>
             </ul>
           </div>
         </div>
@@ -309,7 +310,7 @@
           </div>
           <div>
             <dt>Bez śledzenia</dt>
-            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki. PizuPDF wysyła do usługi Sentry (dane w&nbsp;Unii Europejskiej) techniczny raport tylko wtedy, gdy w&nbsp;narzędziu wystąpi błąd — bez Twoich plików, ich nazw i&nbsp;adresu IP.</dd>
+            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki. Strona pizu.pl oraz narzędzia PizuPDF, PizuAudio i&nbsp;PizuGrafika wysyłają do usługi Sentry (dane w&nbsp;Unii Europejskiej) techniczny raport tylko wtedy, gdy wystąpi błąd — bez Twoich plików, ich nazw i&nbsp;adresu IP.</dd>
           </div>
           <div>
             <dt>Wsparcie przez Suppi</dt>

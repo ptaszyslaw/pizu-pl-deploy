@@ -4,7 +4,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html/pizu/
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp 13fb410abf564564a5251e613378cbf2.txt 404.css 404.html favicon.svg index.html og-image.png pizu-shell.css pizu-shell.js robots.txt settings-init.js sitemap.xml start.css start.js $DEPLOYPATH
+    - /bin/cp 13fb410abf564564a5251e613378cbf2.txt 404.css 404.html error-report.js favicon.svg index.html og-image.png pizu-shell.css pizu-shell.js robots.txt settings-init.js sitemap.xml start.css start.js $DEPLOYPATH
     - /bin/rm -rf ${DEPLOYPATH:?}poradniki
     - /bin/cp -R poradniki $DEPLOYPATH
     - /bin/touch $DEPLOYPATH.htaccess

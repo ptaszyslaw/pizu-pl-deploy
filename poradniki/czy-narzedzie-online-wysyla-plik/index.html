@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta
     http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+    content="default-src 'self'; script-src 'self'; connect-src 'self' https://o4512300568477696.ingest.de.sentry.io; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
   >
   <title>Czy narzędzie online wysyła Twój plik? Jak to sprawdzić | Pizu</title>
   <meta name="description" content="Wiele narzędzi online wysyła pliki na swój serwer. Zobacz, jak w kilka minut sprawdzić to samemu: testem bez internetu i w karcie Sieć przeglądarki.">
@@ -26,6 +26,7 @@
   <meta property="og:image:alt" content="Ptak Pizu i napis: Pizu — narzędzia, które nie wysyłają Twoich plików. Dźwięk, zdjęcia, PDF.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script src="/error-report.js?v=366d8d184c"></script>
   <!-- motyw, kontrast, tekst i animacje z panelu „Wygląd” — przed pierwszym malowaniem -->
   <script src="/settings-init.js?v=dc174dd3ac"></script>
   <!-- wspólna belka i stopka wszystkich stron Pizu (źródło: shell/, kopiuje scripts/sync-shell.mjs) -->
@@ -125,7 +126,7 @@
 <ul>
   <li>pobieranie (GET) części narzędzia z&nbsp;jego serwera, np. pizu.pl/pdf/, także przy pierwszym użyciu niektórych funkcji, takich jak rozpoznawanie tekstu (OCR) czy zdjęcia HEIC,</li>
   <li>w&nbsp;PizuAudio, przy pierwszym oddzielaniu wokalu, pobieranie modelu AI (ok. 172 MB) z&nbsp;serwisu Hugging Face,</li>
-  <li>w&nbsp;PizuPDF&nbsp;— tylko gdy narzędzie trafi na błąd&nbsp;— małe żądanie POST do ingest.de.sentry.io z&nbsp;technicznym raportem, bez pliku, jego nazwy i&nbsp;adresu IP.</li>
+  <li>na pizu.pl oraz w&nbsp;PizuPDF, PizuAudio i&nbsp;PizuGrafika&nbsp;— tylko gdy wystąpi błąd&nbsp;— małe żądanie POST do ingest.de.sentry.io z&nbsp;technicznym raportem, bez pliku, jego nazwy i&nbsp;adresu IP.</li>
 </ul>
 <p>Wszystkie trzy aplikacje już przy pierwszej wizycie zapisują swoje pliki w&nbsp;przeglądarce, także bez instalowania. Potem działają bez internetu: PizuGrafika w&nbsp;całości, PizuPDF poza rozpoznawaniem tekstu (OCR), a&nbsp;PizuAudio poza oddzielaniem wokalu&nbsp;— te dwie funkcje przy pierwszym użyciu muszą pobrać swoje moduły, potem też działają bez sieci. Każdą możesz też zainstalować jak aplikację. Instrukcję krok po kroku masz też na stronie głównej, w&nbsp;sekcji <a href="https://pizu.pl/#sprawdz">Sprawdź sam</a>.</p>
       </div>
@@ -194,7 +195,7 @@
           </div>
           <div>
             <dt>Bez śledzenia</dt>
-            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki. PizuPDF wysyła do usługi Sentry (dane w&nbsp;Unii Europejskiej) techniczny raport tylko wtedy, gdy w&nbsp;narzędziu wystąpi błąd — bez Twoich plików, ich nazw i&nbsp;adresu IP.</dd>
+            <dd>Bez plików cookie, reklam, narzędzi analitycznych i&nbsp;zakładania konta. Serwer, jak każdy, zapisuje standardowe logi dostępu (m.in. adresy IP) w&nbsp;celach bezpieczeństwa i&nbsp;diagnostyki. Strona pizu.pl oraz narzędzia PizuPDF, PizuAudio i&nbsp;PizuGrafika wysyłają do usługi Sentry (dane w&nbsp;Unii Europejskiej) techniczny raport tylko wtedy, gdy wystąpi błąd — bez Twoich plików, ich nazw i&nbsp;adresu IP.</dd>
           </div>
           <div>
             <dt>Wsparcie przez Suppi</dt>
